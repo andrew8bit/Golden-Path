@@ -1,0 +1,35 @@
+{
+  "name": "golden-path",
+  "version": "1.0.0",
+  "description": "Marketplace application ",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/andrew8bit/Golden-Path.git"
+  },
+  "author": "Andrew Bith",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/andrew8bit/Golden-Path/issues"
+  },
+  "homepage": "https://github.com/andrew8bit/Golden-Path#readme",
+  "dependencies": {
+    "axios": "^0.21.1",
+    "bcrypt": "^5.0.0",
+    "connect-flash": "^0.1.1",
+    "dotenv": "^8.2.0",
+    "ejs": "^3.1.6",
+    "express": "^4.17.1",
+    "express-ejs-layouts": "^2.5.0",
+    "express-session": "^1.17.1",
+    "method-override": "^3.0.0",
+    "morgan": "^1.10.0",
+    "passport": "^0.4.1",
+    "passport-local": "^1.0.0",
+    "pg": "^8.5.1",
+    "sequelize": "^6.5.0"
+  }
+}

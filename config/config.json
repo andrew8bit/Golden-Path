@@ -1,0 +1,17 @@
+{
+  "development": {
+    "database": "golden_dev",
+    "host": "127.0.0.1",
+    "dialect": "postgres"
+  },
+  "test": {
+    "database": "golden_test",
+    "host": "127.0.0.1",
+    "dialect": "postgres"
+  },
+  "production": {
+    "database": "golden_prod",
+    "host": "127.0.0.1",
+    "dialect": "postgres"
+  }
+}
