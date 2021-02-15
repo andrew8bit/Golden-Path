@@ -1,0 +1,53 @@
+<div class="header">
+    <img class="goldenLogo" src="/images/GoldenPathNameLogo.png" alt="GOLDENPATH" />
+<svg xmlns="http://www.w3.org/2000/svg" style="display:none">
+    <symbol xmlns="http://www.w3.org/2000/svg" id="sbx-icon-search-1" viewBox="0 0 40 40">
+      <path d="M27.6 29.15c-1.99 1.643-4.543 2.63-7.326 2.63-6.355 0-11.507-5.15-11.507-11.506 0-6.355 5.152-11.507 11.507-11.507 6.355 0 11.507 5.152 11.507 11.507 0 2.783-.987 5.335-2.63 7.325l7.392 7.392c.43.43.436 1.124.005 1.555-.428.428-1.122.428-1.555-.005L27.6 29.15zm-7.326.44c5.145 0 9.315-4.17 9.315-9.316 0-5.145-4.17-9.315-9.316-9.315-5.145 0-9.315 4.17-9.315 9.314 0 5.145 4.17 9.315 9.314 9.315zm16.813.81C38.982 27.292 40 23.72 40 20 40 8.954 31.046 0 20 0S0 8.954 0 20s8.954 20 20 20c3.76 0 7.37-1.04 10.5-2.974.514-.32.674-.994.355-1.51-.318-.514-.993-.673-1.508-.355C26.56 36.884 23.35 37.81 20 37.81c-9.835 0-17.808-7.973-17.808-17.808S10.165 2.192 20 2.192 37.808 10.165 37.808 20c0 3.314-.905 6.492-2.593 9.26-.315.515-.15 1.19.365 1.505.517.315 1.19.152 1.507-.365z"
+      fill-rule="evenodd" />
+    </symbol>
+    <symbol xmlns="http://www.w3.org/2000/svg" id="sbx-icon-clear-2" viewBox="0 0 20 20">
+      <path d="M8.96 10L.52 1.562 0 1.042 1.04 0l.522.52L10 8.96 18.438.52l.52-.52L20 1.04l-.52.522L11.04 10l8.44 8.438.52.52L18.96 20l-.522-.52L10 11.04l-8.438 8.44-.52.52L0 18.96l.52-.522L8.96 10z" fill-rule="evenodd" />
+    </symbol>
+  </svg>
+  
+  <form class="searchbox sbx-custom" action="/results">
+    <div role="search" class="sbx-amazon__wrapper">
+      <input type="search" name="search" placeholder="Search for courses" autocomplete="off" required="required" class="sbx-custom__input">
+      <button type="submit" title="Submit your search query." class="sbx-custom__submit">
+        <svg role="img" aria-label="Search">
+          <use xlink:href="#sbx-icon-search-1"></use>
+        </svg>
+      </button>
+      <button type="reset" title="Clear the search query." class="sbx-custom__reset">
+        <svg role="img" aria-label="Reset">
+          <use xlink:href="#sbx-icon-clear-2"></use>
+        </svg>
+      </button>
+    </div>
+  </form>
+
+  <% if (!currentUser) {%>
+    <a href="/auth/signup">Signup</a>
+    <a href="/auth/login">Login</a>
+        <% } else { %>
+      <a href="/auth/logout">Logout</a>
+     <a href="/profile">Profile</a>
+        <% } %>
+</div>
+<div class = "navbar">
+    <a href = "/">Home</a>
+    <div class = "nav-dropdown">
+        <button class = "nav-drop-btn">
+            Finance
+        </button>
+        <div class = "dropdown-content">
+            <a href = "/">Link</a>
+            <a href = "/">Link</a>
+            <a href = "/">Link</a>
+        </div>
+    </div>
+</div>
+
+  <script type="text/javascript">
+    document.querySelector('.searchbox [type="reset"]').addEventListener('click', function() {  this.parentNode.querySelector('input').focus();});
+  </script>

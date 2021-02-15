@@ -3,27 +3,48 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Authentication</title>
-    <link rel="stylesheet" href="/css/style.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+    <title></title>
+    <link rel="stylesheet" href="dist/assets/css/theme.min.css" />
+    <link href="/dist/assets/fonts/feather/feather.css" rel="stylesheet" />
+    <link href="/dist/assets/libs/dragula/dist/dragula.min.css" rel="stylesheet" />
+    <link href="/dist/assets/libs/@mdi/font/css/materialdesignicons.min.css" rel="stylesheet" />
+    <link href="/dist/assets/libs/prismjs/themes/prism.css" rel="stylesheet" />
+    <link href="/dist/assets/libs/dropzone/dist/dropzone.css" rel="stylesheet" />
+    <link href="/dist/assets/libs/magnific-popup/dist/magnific-popup.css" rel="stylesheet" />
+    <link href="/dist/assets/libs/bootstrap-select/dist/css/bootstrap-select.min.css" rel="stylesheet">
+    <link href="/dist/assets/libs/@yaireo/tagify/dist/tagify.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css" />
   </head>
   <body>
     <%- include('partials/alerts') %>
     <header>
       <nav>
-        <ul>
-          <% if (!currentUser) {%>
-            <li><a href="/auth/signup">Signup</a></li>
-            <li><a href="/auth/login">Login</a></li>
-          <% } else { %>
-          <li><a href="/auth/logout">Logout</a></li>
-          <li><a href="/profile">Profile</a></li>
-          <% } %>
-        </ul>
+        <%- include('partials/header') %>
       </nav>
     </header>
-    <h1>Authentication</h1>
     <%- body %>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
+    <script src="/dist/assets/libs/jquery/dist/jquery.min.js"></script>     
+    <script src="/dist/assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>     
+    <script src="/dist/assets/js/theme.min.js"></script>
   </body>
+  <div class="footer">
+    <div class="container">
+        <div class="row align-items-center no-gutters border-top py-2">
+            <!-- Desc -->
+            <div class="col-md-6 col-12">
+                <span>© Golden Path formatted with 2020 Geeks. All Rights Reserved.</span>
+            </div>
+              <!-- Links -->
+            <div class="col-12 col-md-6">
+                <nav class="nav justify-content-center justify-content-md-end">
+                    <a class="nav-link active pl-0" href="#!">Privacy</a>
+                    <a class="nav-link" href="#!">Terms </a>
+                    <a class="nav-link" href="#!">Feedback</a>
+                    <a class="nav-link" href="#!">Support</a>
+                </nav>
+            </div>
+        </div>
+    </div>
+</div>
+
 </html>
