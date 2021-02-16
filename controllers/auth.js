@@ -1,6 +1,11 @@
+require('dotenv').config();
 const express = require('express');
+const layouts = require('express-ejs-layouts');
 const passport = require('../config/ppConfig');
 const router = express.Router();
+
+
+
 
 // import database
 const db = require('../models');
