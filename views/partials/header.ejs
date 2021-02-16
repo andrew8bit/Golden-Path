@@ -916,12 +916,12 @@
 					  <hr class="mx-3" />
 				   </li>
 				   <li>
-					  <a class="dropdown-item" href="./pages/sign-in.html">
+					  <a class="dropdown-item" href="/auth/login">
 					  Sign In
 					  </a>
 				   </li>
 				   <li>
-					  <a class="dropdown-item" href="./pages/sign-up.html">
+					  <a class="dropdown-item" href="/auth/signup">
 					  Sign Up
 					  </a>
 				   </li>
@@ -1024,16 +1024,18 @@
 				</div>
 			 </li>
 		  </ul>
-		  <form class="mt-3 mt-lg-0 ml-lg-3 d-flex align-items-center">
+      <!-------------------------- search bar ------------------------>
+		  <form class="mt-3 mt-lg-0 ml-lg-3 d-flex align-items-center" action="/results">
 			 <span class="position-absolute pl-3 search-icon">
 			 <i class="fe fe-search"></i>
 			 </span>
 			 <input
 				type="search"
-				class="form-control pl-6"
+				class="form-control pl-6 searchbar"
 				placeholder="Search Courses"
 				/>
 		  </form>
+      
 		  <ul class="navbar-nav navbar-right-wrap ml-auto d-none d-lg-block">
 			 <li class="dropdown d-inline-block stopevent">
 				<a
