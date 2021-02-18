@@ -89,6 +89,12 @@
     background-position: center 10%;
     background-size: 100%;
 }
+.instructor-profile-bg{
+    background-image: url(../images/purple-room-joshua-rawson-harris.jpg);
+    background-color: transparent;
+    background-position: center;
+    background-size: 100%;
+}
 
 .filtersNav {
     padding-top: 1.5em;

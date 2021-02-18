@@ -22,6 +22,9 @@ instructorRouter.get('/logout', (req, res) => {
   res.redirect('/');
 });
 
+instructorRouter.get('/profile', (req, res) => {
+  res.render('auth/instructor/profile'); // this is a form
+});
 instructorRouter.get('/my-courses', (req, res) => {
   res.render('auth/instructor/my-courses'); // this is a form
 });
