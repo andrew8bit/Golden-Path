@@ -31,7 +31,7 @@ instructorRouter.get('/profile-edit', (req, res) => {
 instructorRouter.get('/security', (req, res) => {
   res.render('auth/instructor/security'); // this is a form
 });
-instructorRouter.get('/payment', (req, res) => {
+instructorRouter.get('/payment-method', (req, res) => {
   res.render('auth/instructor/payment-method'); // this is a form
 });
 instructorRouter.get('/delete-profile', (req, res) => {
