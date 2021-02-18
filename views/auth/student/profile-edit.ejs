@@ -118,6 +118,11 @@
                             </p>
                             <!-- Form -->
                             <form class="form-row">
+                                <!-- Username -->
+                                <div class="form-group col-12 col-md-6">
+                                    <label class="form-label" for="uname">Username</label>
+                                    <input type="text" id="uname" class="form-control" placeholder="Username" required />
+                                </div>
                                 <!-- First name -->
                                 <div class="form-group col-12 col-md-6">
                                     <label class="form-label" for="fname">First Name</label>
@@ -139,37 +144,23 @@
                                     <input class="form-control flatpickr" type="text" placeholder="Birth of Date" id="birth"
                                         name="birth" />
                                 </div>
-                                <!-- Address -->
+                                <!-- Location -->
                                 <div class="form-group col-12 col-md-6">
-                                    <label class="form-label" for="address">Address Line 1</label>
-                                    <input type="text" id="address" class="form-control" placeholder="Address" required />
-                                </div>
-                                <!-- Address -->
-                                <div class="form-group col-12 col-md-6">
-                                    <label class="form-label" for="address2">Address Line 2</label>
-                                    <input type="text" id="address2" class="form-control" placeholder="Address" required />
-                                </div>
-                                <!-- State -->
-                                <div class="form-group col-12 col-md-6">
-                                    <label class="form-label">State</label>
-                                    <select class="selectpicker" data-width="100%">
-                                        <option value="">Select State</option>
-                                        <option value="1">Gujarat</option>
-                                        <option value="2">Rajasthan</option>
-                                        <option value="3">Maharashtra</option>
+                                    <label class="input-label" for="location">Location</label>
+                                    <select id="location" name="location" class="form-control">
+                                       <option>Country</option>
+                                       <option value="USA">USA</option>
+                                       <option value="Canada">Canada</option>
+                                       <option value="Mexico">Mexico</option>
                                     </select>
-                                </div>
-                                <!-- Country -->
-                                <div class="form-group col-12 col-md-6">
-                                    <label class="form-label">Country</label>
-                                    <select class="selectpicker" data-width="100%">
-                                        <option value="">Select Country</option>
-                                        <option value="1">India</option>
-                                        <option value="2">UK</option>
-                                        <option value="3">USA</option>
-                                    </select>
-                                </div>
-                                <div class="col-12">
+                                 </div>
+                                 <!-- About Me -->
+                                 <div class="form-group" style="width: 100%;">
+                                    <label class="input-label" for="aboutInput">About you</label>
+                                    <textarea name= "aboutInput" id="aboutnput" class="form-control"
+                                       placeholder="Tell us about yourself" rows="4"></textarea>
+                                 </div>
+                              </form>
                                     <!-- Button -->
                                     <button class="btn btn-primary" type="submit">
                                         Update Profile

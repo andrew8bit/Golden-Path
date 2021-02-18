@@ -8,7 +8,7 @@
 }
 
 .searchbar {
-    width:30em;
+    width:45em;
 }
 
 .what-is-golden-path{
@@ -100,4 +100,8 @@
 
 .checkbox-pad {
     padding-left: 3em;
+}
+
+.minus-pd-top {
+    padding-top : -5.5em;
 }
