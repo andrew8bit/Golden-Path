@@ -1,4 +1,10 @@
 node_modules/
 .env
 package-log.json
-public
+public/dist
+public/src
+public/gulpfile.js
+public/LICENSE
+public/package.json
+public/package-lock.json
+pubic/README.md

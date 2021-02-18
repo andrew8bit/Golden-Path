@@ -1,0 +1,103 @@
+.background-grey {
+    background-color: transparent;
+    background-image: url(../images/MountainPass-christopher-austin-.jpg);
+    background-size: 100%;
+    height: 400px;
+    background-position: center;
+    padding-top: 2em;
+}
+
+.searchbar {
+    width:30em;
+}
+
+.what-is-golden-path{
+    color: #dddddd;
+}
+
+.btn-browse {
+    background-color: transparent;
+    border-color: white;
+}
+
+.student-login-bg {
+    background-image: url(../images/temple-pahala-basuki.jpg);
+    background-color: transparent;
+    background-position: center;
+    padding:0;
+    margin:0;
+    background-size: cover;
+    width:100%;
+    overflow: hidden;
+    max-width: 1400px;
+}
+
+.student-signup-bg {
+    background-image: url(../images/tori-tianshu-liu.jpg);
+    background-color: transparent;
+    background-position: center;
+    padding:0;
+    margin:0;
+    background-size: 100%;
+    width:100%;
+    overflow: hidden;
+    max-width: 1400px;
+}
+.instructor-login-bg {
+    background-image: url(../images/buddah-alexandre-chambonpg.jpg);
+    background-color: transparent;
+    background-position: center;
+    padding:0;
+    margin:0;
+    background-size: cover;
+    width:100%;
+    overflow: hidden;
+    max-width: 1400px;
+}
+
+.instructor-signup-bg {
+    background-image: url(../images/temple-psk-slayer.jpg);
+    background-color: transparent;
+    background-position: center;
+    padding:0;
+    margin:0;
+    background-size: 100%;
+    width:100%;
+    overflow: hidden;
+    max-width: 1400px;
+}
+
+.darkgrey {
+    background-color: #dddddd;
+}
+
+.results-bg {
+    background-image: url(../images/stargazing-taneli-lahtinen.jpg);
+    background-color: transparent;
+    background-position: center;
+    background-size: 100%;
+}
+.results-bg-bottom {
+    background-image: url(../images/stargazing-taneli-lahtinen.jpg);
+    background-color: transparent;
+    background-position: center 75%;
+    background-size: 100%;
+}
+
+.filtersNav {
+    padding-top: 1.5em;
+    padding-bottom: 1.5em;;
+}
+
+.content-pad {
+    padding-left: 1.5em;
+}
+
+.outline-primary {
+    color: #754ffe;
+    border: 1px solid #754ffe;
+}
+
+.checkbox-pad {
+    padding-left: 3em;
+}
