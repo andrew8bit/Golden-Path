@@ -77,10 +77,10 @@
     background-position: center;
     background-size: 100%;
 }
-.results-bg-bottom {
-    background-image: url(../images/stargazing-taneli-lahtinen.jpg);
+.student-bg{
+    background-image: url(../images/purpledoor-jude-beck.jpg);
     background-color: transparent;
-    background-position: center 75%;
+    background-position: center 80%;
     background-size: 100%;
 }
 
