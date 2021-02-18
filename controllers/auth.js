@@ -24,6 +24,14 @@ router.get('/logout', (req, res) => {
   res.redirect('/');
 });
 
+router.get('/student/profile-edit', (req, res) => {
+  res.render('auth/student/profile-edit'); // this is a form
+});
+
+router.get('/instructor/profile-edit', (req, res) => {
+  res.render('auth/instructor/profile-edit'); // this is a form
+});
+
 
 // What routes do we need (post routes)
 router.post('/signup', (req, res) => {
