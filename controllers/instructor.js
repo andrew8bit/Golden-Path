@@ -23,19 +23,19 @@ instructorRouter.get('/logout', (req, res) => {
 });
 
 instructorRouter.get('/my-courses', (req, res) => {
-  res.render('auth/instructor/profile-edit'); // this is a form
+  res.render('auth/instructor/my-courses'); // this is a form
 });
 instructorRouter.get('/profile-edit', (req, res) => {
   res.render('auth/instructor/profile-edit'); // this is a form
 });
 instructorRouter.get('/security', (req, res) => {
-  res.render('auth/instructor/profile-edit'); // this is a form
+  res.render('auth/instructor/security'); // this is a form
 });
 instructorRouter.get('/payment', (req, res) => {
-  res.render('auth/instructor/profile-edit'); // this is a form
+  res.render('auth/instructor/payment-method'); // this is a form
 });
 instructorRouter.get('/delete-profile', (req, res) => {
-  res.render('auth/instructor/profile-edit'); // this is a form
+  res.render('auth/instructor/delete-profile'); // this is a form
 });
 
 
