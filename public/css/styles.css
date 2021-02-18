@@ -95,6 +95,13 @@
     background-position: center;
     background-size: 100%;
 }
+.creation-bg{
+    background-image: url(../images/canvas-tim-arterbury.jpg);
+    background-color: transparent;
+    background-position: center;
+    background-size: 100%;
+
+}
 
 .filtersNav {
     padding-top: 1.5em;
@@ -118,3 +125,6 @@
     padding-top : -5.5em;
 }
 
+.courseAdd {
+    margin: auto 0;
+}

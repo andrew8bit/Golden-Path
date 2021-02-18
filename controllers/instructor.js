@@ -40,6 +40,9 @@ instructorRouter.get('/payment-method', (req, res) => {
 instructorRouter.get('/delete-profile', (req, res) => {
   res.render('auth/instructor/delete-profile'); // this is a form
 });
+instructorRouter.get('/add-course', (req, res) => {
+  res.render('auth/instructor/add-course'); // this is a form
+});
 
 
 // What routes do we need (post routes)
