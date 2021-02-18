@@ -27,6 +27,15 @@ studentRouter.get('/profile-edit', (req, res) => {
 studentRouter.get('/security', (req, res) => {
   res.render('auth/student/security'); // this is a form
 });
+studentRouter.get('/payment-method', (req, res) => {
+  res.render('auth/student/payment-method'); // this is a form
+});
+studentRouter.get('/delete-profile', (req, res) => {
+  res.render('auth/student/delete-profile'); // this is a form
+});
+studentRouter.get('/signout', (req, res) => {
+  res.redirect('/')
+})
 
 
 
