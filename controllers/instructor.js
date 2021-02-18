@@ -1,45 +1,34 @@
+
 require('dotenv').config();
 const express = require('express');
 const layouts = require('express-ejs-layouts');
 const passport = require('../config/ppConfig');
-const router = express.Router();
+const instructorRouter = express.Router();
 
 // import database
 const db = require('../models');
 
-// router.get('/student/signup', (req, res) => {
-//   res.render('auth/student/signup'); // this is a form
-// });
+instructorRouter.get('/signup', (req, res) => {
+  res.render('auth/instructor/signup'); // this is a form
+});
 
-// router.get('/student/login', (req, res) => {
-//   res.render('auth/student/login'); // this is a form
-// });
+instructorRouter.get('/login', (req, res) => {
+  res.render('auth/instructor/login'); // this is a form
+});
 
-// router.get('/instructor/signup', (req, res) => {
-//   res.render('auth/instructor/signup'); // this is a form
-// });
+instructorRouter.get('/logout', (req, res) => {
+  req.logOut(); // logs the user out of the session
+  req.flash('success', 'Logging out... See you next time!');
+  res.redirect('/');
+});
 
-// router.get('/instructor/login', (req, res) => {
-//   res.render('auth/instructor/login'); // this is a form
-// });
-
-// router.get('/logout', (req, res) => {
-//   req.logOut(); // logs the user out of the session
-//   req.flash('success', 'Logging out... See you next time!');
-//   res.redirect('/');
-// });
-
-// router.get('/student/profile-edit', (req, res) => {
-//   res.render('auth/student/profile-edit'); // this is a form
-// });
-
-// router.get('/instructor/profile-edit', (req, res) => {
-//   res.render('auth/instructor/profile-edit'); // this is a form
-// });
+instructorRouter.get('/profile-edit', (req, res) => {
+  res.render('auth/instructor/profile-edit'); // this is a form
+});
 
 
 // What routes do we need (post routes)
-router.post('/signup', (req, res) => {
+instructorRouter.post('/signup', (req, res) => {
   // we now have access to the user info (req.body);
   // console.log(req.body);
   const { email, name, password } = req.body; // goes and us access to whatever key/value inside of the object (req.body)
@@ -72,12 +61,12 @@ router.post('/signup', (req, res) => {
   });
 });
 
-router.post('/login', passport.authenticate('local', {
+instructorRouter.post('/login', passport.authenticate('local', {
   successRedirect: '/',
-  failureRedirect: '/auth/login',
+  failureRedirect: '/instructor/login',
   successFlash: 'Welcome back ...',
   failureFlash: 'Either email or password is incorrect' 
 }));
 
 
-module.exports = router;
+module.exports = instructorRouter;

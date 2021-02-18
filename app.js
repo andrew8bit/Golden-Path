@@ -46,7 +46,9 @@ app.use((req, res, next) => {
 });
 
 // Controllers
-app.use('/auth', require('./controllers/auth'));
+// app.use('/auth', require('./controllers/auth'));
+app.use('/student', require('./controllers/student'));
+app.use('/instructor', require('./controllers/instructor'));
 
 app.get('/', (req, res) => {
   res.render('homepage');
