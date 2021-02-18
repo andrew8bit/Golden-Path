@@ -83,6 +83,12 @@
     background-position: center 80%;
     background-size: 100%;
 }
+.instructor-bg{
+    background-image: url(../images/deskart-kobu-agency.jpg);
+    background-color: transparent;
+    background-position: center 10%;
+    background-size: 100%;
+}
 
 .filtersNav {
     padding-top: 1.5em;
@@ -105,3 +111,4 @@
 .minus-pd-top {
     padding-top : -5.5em;
 }
+

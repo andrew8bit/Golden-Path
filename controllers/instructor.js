@@ -22,7 +22,19 @@ instructorRouter.get('/logout', (req, res) => {
   res.redirect('/');
 });
 
+instructorRouter.get('/my-courses', (req, res) => {
+  res.render('auth/instructor/profile-edit'); // this is a form
+});
 instructorRouter.get('/profile-edit', (req, res) => {
+  res.render('auth/instructor/profile-edit'); // this is a form
+});
+instructorRouter.get('/security', (req, res) => {
+  res.render('auth/instructor/profile-edit'); // this is a form
+});
+instructorRouter.get('/payment', (req, res) => {
+  res.render('auth/instructor/profile-edit'); // this is a form
+});
+instructorRouter.get('/delete-profile', (req, res) => {
   res.render('auth/instructor/profile-edit'); // this is a form
 });
 
