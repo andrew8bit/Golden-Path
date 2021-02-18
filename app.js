@@ -4,6 +4,7 @@ const layouts = require('express-ejs-layouts');
 const session = require('express-session');
 const passport = require('./config/ppConfig'); //
 const flash = require('connect-flash');
+const consoleSep = '********************************************************************';
 
 
 const app = express();
@@ -16,6 +17,7 @@ const isLoggedIn = require('./middleware/isLoggedIn.js');
 // MIDDLEWARE
 app.use(require('morgan')('dev'));
 app.use(express.urlencoded({ extended: false }));
+app.use(express.json());
 app.use(express.static(__dirname + '/public'));
 app.use(layouts);
 
@@ -49,6 +51,11 @@ app.use('/auth', require('./controllers/auth'));
 app.get('/', (req, res) => {
   res.render('homepage');
 });
+
+app.get('/results', (req, res) => {
+  let searchQuery = req.query.search
+  res.render('results', {searchQuery})
+})
 
 app.get('/profile', isLoggedIn, (req, res) => {
   const { id, name, email } = req.user.get(); 
