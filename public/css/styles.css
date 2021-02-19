@@ -100,7 +100,15 @@
     background-color: transparent;
     background-position: center;
     background-size: 100%;
-
+}
+.studentDash-bg{
+    background-image: url(../images/smoke-gwendal-cottin.jpg);
+    background-color: transparent;
+    background-position: center;
+    background-size: 100%;
+}
+.studentDash-content{
+    padding-top: 2em;
 }
 
 .filtersNav {

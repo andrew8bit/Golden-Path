@@ -24,6 +24,9 @@ studentRouter.get('/logout', (req, res) => {
 studentRouter.get('/profile-edit', (req, res) => {
   res.render('auth/student/profile-edit'); // this is a form
 });
+studentRouter.get('/dashboard', (req, res) => {
+  res.render('auth/student/dashboard'); // this is a form
+});
 studentRouter.get('/security', (req, res) => {
   res.render('auth/student/security'); // this is a form
 });

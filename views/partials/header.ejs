@@ -509,7 +509,7 @@
 				   class="dropdown-menu dropdown-menu-arrow"
 				   aria-labelledby="navbarAccount"
 				   >
-				   <!----------------------------------------------------->
+				   <!------------------------- Account Content -------------------------->
 				   <li>
 					  <h4 class="dropdown-header">Instructors</h4>
 				   </li>
@@ -533,7 +533,7 @@
 						 <li>
 							<a
 							   class="dropdown-item"
-							   href="./pages/dashboard-instructor.html"
+							   href="/instructor/profile-edit"
 							   >
 							Dashboard</a
 							   >
@@ -541,69 +541,37 @@
 						 <li>
 							<a
 							   class="dropdown-item"
-							   href="./pages/instructor-profile.html"
+							   href="/instructor/profile"
 							   >
-							Profile</a
+							View Profile</a
 							   >
 						 </li>
 						 <li>
 							<a
 							   class="dropdown-item"
-							   href="./pages/instructor-courses.html"
+							   href="/instructor/my-courses/"
 							   >
 							My Courses
 							</a>
 						 </li>
 						 <li>
 							<a
-							   class="dropdown-item"
-							   href="./pages/instructor-order.html"
+							   class="btn btn-primary btn-sm d-none d-md-block"
+							   href="/instructor/add-course/"
 							   >
-							Orders</a
-							   >
-						 </li>
-						 <li>
-							<a
-							   class="dropdown-item"
-							   href="./pages/instructor-reviews.html"
-							   >
-							Reviews</a
-							   >
-						 </li>
-						 <li>
-							<a
-							   class="dropdown-item"
-							   href="./pages/instructor-students.html"
-							   >
-							Students</a
-							   >
-						 </li>
-						 <li>
-							<a
-							   class="dropdown-item"
-							   href="./pages/instructor-payouts.html"
-							   >
-							Payouts</a
-							   >
-						 </li>
-						 <li>
-							<a
-							   class="dropdown-item"
-							   href="./pages/instructor-earning.html"
-							   >
-							Earning</a
-							   >
+							Add a course
+							</a>
 						 </li>
 					  </ul>
 				   </li>
 
 				   <li>
-					<a class="dropdown-item" href="/auth/login">
+					<a class="dropdown-item" href="/instructor/login">
 					Sign In
 					</a>
 				 </li>
 				 <li>
-					<a class="dropdown-item" href="/auth/signup">
+					<a class="dropdown-item" href="/instructor/signup">
 					Sign Up
 					</a>
 				 </li>
@@ -611,7 +579,7 @@
 					<hr class="mx-3" />
 				 </li>
 				 <li>
-					<a class="dropdown-item" href="/auth/signup">
+					<a class="dropdown-item" href="/instrutor/logout">
 					Log Out
 					</a>
 				 </li>
@@ -638,15 +606,24 @@
 						 <li>
 							<a
 							   class="dropdown-item"
-							   href="./pages/dashboard-student.html"
+							   href="/student/dashboard/"
 							   >
 							Dashboard</a
 							   >
 						 </li>
 						 <li>
+						 <li>
 							<a
 							   class="dropdown-item"
-							   href="./pages/payment-method.html"
+							   href="/student/profile-edit/"
+							   >
+							Edit Profile</a
+							   >
+						 </li>
+						 <li>
+							<a
+							   class="dropdown-item"
+							   href="/student/payment-method/"
 							   >
 							Payments</a
 							   >
@@ -663,12 +640,12 @@
 					  </ul>
 				   </li>
 				   <li>
-					  <a class="dropdown-item" href="/auth/login">
+					  <a class="dropdown-item" href="/student/login">
 					  Sign In
 					  </a>
 				   </li>
 				   <li>
-					  <a class="dropdown-item" href="/auth/signup">
+					  <a class="dropdown-item" href="/student/signup">
 					  Sign Up
 					  </a>
 				   </li>
@@ -676,7 +653,7 @@
 					<hr class="mx-3" />
 				 </li>
 				 <li>
-					<a class="dropdown-item" href="/auth/signup">
+					<a class="dropdown-item" href="/student/logout">
 					Log Out
 					</a>
 				 </li>

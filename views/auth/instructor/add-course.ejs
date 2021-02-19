@@ -20,79 +20,92 @@
     </div>
     <div>
         <div>
-                    <!-- Card -->
-                    <div class="card">
-                        <!-- Card header -->
-                        <div class="card-header">
-                            <h3 class="mb-0">Course Details</h3>
-                            <p class="mb-0">
-                                Be as descriptive as possible so your students know what your course is all about!
-                            </p>
-                        </div>
-                        <!-- Card body -->
-                        <div class="card-body">
-                            <div class="d-lg-flex align-items-center justify-content-between">
-                            </div>
-                                <!-- Form -->
-                                <form class="form-row">
-                                    <!-- Course Title -->
-                                    <div class="form-group col-12 col-md-6">
-                                        <label class="form-label" for="courseTitle">Course Title</label>
-                                        <input type="text" id="courseTitle" class="form-control" placeholder="Golden Path 101"
-                                            required />
-                                    </div>
-                                    <!-- Course Category -->
-                                    <div class="form-group col-12 col-md-6">
-                                        <label class="form-label" for="courseCat">Course Category</label>
-                                        <input type="text" id="courseCat" class="form-control"
-                                            placeholder="Finance" required />
-                                    </div>
-                                    <!-- Level -->
-                                    <div class="form-group col-12 col-md-6">
-                                        <label class="form-label" for="courseLevel">Course Level</label>
-                                        <input type="text" id="courseLevel" class="form-control" placeholder="Beginner"
-                                            required />
-                                    </div>
-                                    <!-- Course Time -->
-                                    <div class="form-group col-12 col-md-6">
-                                        <label class="form-label" for="courseTime">Time</label>
-                                        <input type="text" id="courseTime" class="form-control" placeholder="50 Hours"
-                                            required />
-                                    </div>
-                                    <!-- Course Description -->
-                                    <div class="form-group" style="width: 100%;">
-                                        <label class="input-label" for="courseDescription">Course Description</label>
-                                        <textarea name="courseDescription" id="courseDescription" class="form-control"
-                                            placeholder="An introduction to your course" rows="4"></textarea>
-                                    </div>
-                                    <!-- Lecture 1 -->
-                                    <div class="form-group col-12 col-md-6">
-                                        <label class="form-label" for="lectureTitle">Lecture Title</title></label>
-                                        <input type="text" id="lectureTitle" class="form-control" placeholder="Lecture Topic"
-                                            required />
-                                    </div>
-                                    <div class="form-group col-12 col-md-6">
-                                        <label class="form-label" for="lectureTime">Lecture Time</title></label>
-                                        <input type="text" id="lectureTime" class="form-control" placeholder="4 Hours"
-                                            required />
-                                    </div>
-                                    <!-- Lecture Content 1-->
-                                    <div class="form-group" style="width: 100%;">
-                                        <label class="input-label" for="lectureContent">Lecture Description</label>
-                                        <textarea name="lectureContent" id="lectureContent" class="form-control"
-                                            placeholder="Lecture Content" rows="4"></textarea>
-                                    </div>
-                                </form>
-                                <!-- Button -->
-                                <button class="btn btn-primary" type="submit">
-                                    Submit Course 
-                                </button>
-                            </div>
-                            </form>
-                        </div>
-                    </div>
+            <!-- Card -->
+            <div class="card">
+                <!-- Card header -->
+                <div class="card-header">
+                    <h3 class="mb-0">Course Details</h3>
+                    <p class="mb-0">
+                        Be as descriptive as possible so your students know what your course is all about!
+                    </p>
                 </div>
+                <!-- Card body -->
+                <div class="card-body">
+                    <div class="d-lg-flex align-items-center justify-content-between">
+                    </div>
+                    <!-- Form -->
+                    <form class="form-row">
+                        <!-- Course Title -->
+                        <div class="form-group col-12 col-md-6">
+                            <label class="form-label" for="courseTitle">Course Title</label>
+                            <input type="text" id="courseTitle" class="form-control" placeholder="Golden Path 101"
+                                required />
+                        </div>
+                        <!-- Course Category -->
+                        <div class="form-group col-12 col-md-6">
+                            <label class="input-label" for="courseCat">Course Category</label>
+                            <select id="courseCat" name="courseCat" class="form-control">
+                               <option>Category</option>
+                               <option value="Programming">Programming</option>
+                               <option value="Design">Design</option>
+                               <option value="Finance">Finance</option>
+                               <option value="Digital Business">Digital Business</option>
+                               <option value="Language">Language</option>
+                               <option value="Retail">Retail</option>
+                               <option value="Lifestyle">Lifestyle</option>
+                               <option value="Music">Music</option>
+                               <option value="Photography">Photgraphy</option>
+                               <option value="Food">Food</option>
+                               <option value="Art">Art</option>
+                            </select>
+                         </div>
+                        <!-- Level -->
+                        <div class="form-group col-12 col-md-6">
+                            <label class="input-label" for="courseLevel">Course Difficulty</label>
+                            <select id="courseLevel" name="courseLevel" class="form-control">
+                               <option>Level</option>
+                               <option value="beginner">Beginner</option>
+                               <option value="intermediate">Intermediate</option>
+                               <option value="advanced">Advanced</option>
+                            </select>
+                         </div>
+                        <!-- Course Time -->
+                        <div class="form-group col-12 col-md-6">
+                            <label class="form-label" for="courseTime">Time</label>
+                            <input type="text" id="courseTime" class="form-control" placeholder="50 Hours" required />
+                        </div>
+                        <!-- Course Description -->
+                        <div class="form-group" style="width: 100%;">
+                            <label class="input-label" for="courseDescription">Course Description</label>
+                            <textarea name="courseDescription" id="courseDescription" class="form-control"
+                                placeholder="An introduction to your course" rows="4"></textarea>
+                        </div>
+                        <!-- Lecture 1 -->
+                        <div class="form-group col-12 col-md-6">
+                            <label class="form-label" for="lectureTitle">Lecture Title</title></label>
+                            <input type="text" id="lectureTitle" class="form-control" placeholder="Lecture Topic"
+                                required />
+                        </div>
+                        <div class="form-group col-12 col-md-6">
+                            <label class="form-label" for="lectureTime">Lecture Time</title></label>
+                            <input type="text" id="lectureTime" class="form-control" placeholder="4 Hours" required />
+                        </div>
+                        <!-- Lecture Content 1-->
+                        <div class="form-group" style="width: 100%;">
+                            <label class="input-label" for="lectureContent">Lecture Description</label>
+                            <textarea name="lectureContent" id="lectureContent" class="form-control"
+                                placeholder="Lecture Content" rows="4"></textarea>
+                        </div>
+                    </form>
+                    <!-- Button -->
+                    <button class="btn btn-primary" type="submit">
+                        Submit Course
+                    </button>
+                </div>
+                </form>
             </div>
         </div>
     </div>
-    
+    </div>
+    </div>
+    </div>
