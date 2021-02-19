@@ -14,6 +14,9 @@ module.exports = {
       img: {
         type: Sequelize.STRING
       },
+      tag: {
+        type: Sequelize.STRING
+      },
       email: {
         type: Sequelize.STRING
       },
@@ -33,6 +36,9 @@ module.exports = {
         type: Sequelize.STRING
       },
       location: {
+        type: Sequelize.STRING
+      },
+      about: {
         type: Sequelize.STRING
       },
       createdAt: {

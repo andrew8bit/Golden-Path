@@ -31,16 +31,94 @@ const seperator = "*******************************************************"
 //   console.log(seperator)
 //   console.log(newUser)
 // })
-const createUser = (email, password) => {
-  db.user.findOrCreate({
+
+// const createUser = (email, password) => {
+//   db.user.findOrCreate({
+//     where: {
+//       email: email,
+//       password: password
+//     }
+//   }).then(function ([user, created]){
+//     console.log(user)
+//   })
+// }
+
+// createUser("GPtestuser01@gmail.com", "Password123");
+// createUser("GPtestuser02@gmail.com", "Password456");
+// createUser("GPtestuser03@gmail.com", "Password890");
+
+// const updateUser = (userId, username, img, firstName, lastName, phoneNumber, birthday, location, about) => {
+//   db.user.update({
+//     username: username,
+//     img: img,
+//     firstName: firstName,
+//     lastName: lastName,
+//     phoneNumber: phoneNumber,
+//     birthday: birthday,
+//     location: location,
+//     about: about,
+//   }, { 
+//     where: {
+//     id: userId
+//     }
+//   }).then(function (user) {
+//     console.log(user)
+//   })
+// }
+
+// updateUser(1, "GPUSER", "Golden", "Path", "3423432", "01/22/1997", "USA", "testing about")
+// updateUser(2, "GPUSER", "Golden", "Path", "3423432", "01/22/1997", "USA", "testing about")
+// updateUser(3, "GPUSER", "Golden", "Path", "3423432", "01/22/1997", "USA", "testing about")
+
+// const createInstructor = (email, password) => {
+//   db.instructor.findOrCreate({
+//     where: {
+//       email: email,
+//       password: password
+//     }
+//   }).then(function ([instructor, created]){
+//     console.log(instructor)
+//   })
+// }
+
+// const updateInstructor = (userId, username, tag, firstName, lastName, phoneNumber, birthday, location, about) => {
+//   db.instructor.update({
+//     username: username,
+//     tag:tag,
+//     firstName: firstName,
+//     lastName: lastName,
+//     phoneNumber: phoneNumber,
+//     birthday: birthday,
+//     location: location,
+//     about: about,
+//   }, { 
+//     where: {
+//     id: userId
+//     }
+//   }).then(function (user) {
+//     console.log(user)
+//   })
+// }
+
+const deleteInstructor = (instructorId) => {
+  db.instructor.destroy({
     where: {
-      email: email,
-      password: password
+      id: instructorId
+    }
+  })
+}
+const deleteUser = (userId) => {
+  db.user.destroy({
+    where: {
+      id: userId
     }
   })
 }
 
-const updateUser = (username, firstName, lastName, phone, birthday, location,)
+
+// createInstructor("GPtestInstructor01@gmail.com", "Password123");
+// createInstructor("GPtestInstructor02@gmail.com", "Password456");
+// createInstructor("GPtestInstructor03@gmail.com", "Password890");
 
 
 /******************************/
@@ -126,44 +204,44 @@ const updateUser = (username, firstName, lastName, phone, birthday, location,)
 //     instructorId: DataTypes.INTEGER
 //     },
 
-db.course.findOrCreate({ // course creation
-  where: {
-    name: "Introduction to JavaScript",
-    time: "3 Hours",
-    difficulty: "Beginner",
-    description: "An online guide to the basics of JavaScript"
-  },
-}) // end of course creation
-.then(function ([course, created]) {
-  db.category.findOrCreate({ // find or creating category
-    where: {
-      name: "Programming"
-    }
-  })
-  .then(function ([category, created]) {
-    category.addCourse(course).then(function (courseCatInfo) { // add that category to course
-      db.subject.findOrCreate({ // find or creating subject
-        where: {
-          name: "JavaScript"
-        }
-      })
-      .then(function ([subject, created]) {
-        subject.addCourse(course).then(function (courseSubInfo) { // add that subject to course
-          db.instructor.findOrCreate({ // find or create instructor
-            where: {
-              username: "GPAdmin"
-            }
-          })
-          .then(function ([instructor, created]) {
-            instructor.addCourse(course).then(function (courseInstInfo) { // add that instructor to course
-              console.log(course)
-            }) // end of log 
-          }) // end of function add 
-        }) // end of function instructorfindOrCreate
-      }) // end of function subAdd
-    }) // end of function subfindOrCreate
-  }) // end of function catAdd
-}) // end of function catfindOrCreate
+// db.course.findOrCreate({ // course creation
+//   where: {
+//     name: "Introduction to JavaScript",
+//     time: "3 Hours",
+//     difficulty: "Beginner",
+//     description: "An online guide to the basics of JavaScript"
+//   },
+// }) // end of course creation
+// .then(function ([course, created]) {
+//   db.category.findOrCreate({ // find or creating category
+//     where: {
+//       name: "Programming"
+//     }
+//   })
+//   .then(function ([category, created]) {
+//     category.addCourse(course).then(function (courseCatInfo) { // add that category to course
+//       db.subject.findOrCreate({ // find or creating subject
+//         where: {
+//           name: "JavaScript"
+//         }
+//       })
+//       .then(function ([subject, created]) {
+//         subject.addCourse(course).then(function (courseSubInfo) { // add that subject to course
+//           db.instructor.findOrCreate({ // find or create instructor
+//             where: {
+//               username: "GPAdmin"
+//             }
+//           })
+//           .then(function ([instructor, created]) {
+//             instructor.addCourse(course).then(function (courseInstInfo) { // add that instructor to course
+//               console.log(course)
+//             }) // end of log 
+//           }) // end of function add 
+//         }) // end of function instructorfindOrCreate
+//       }) // end of function subAdd
+//     }) // end of function subfindOrCreate
+//   }) // end of function catAdd
+// }) // end of function catfindOrCreate
 
 
 

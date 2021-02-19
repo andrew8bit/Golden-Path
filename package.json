@@ -4,7 +4,8 @@
   "description": "Marketplace application ",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
   },
   "repository": {
     "type": "git",
@@ -30,6 +31,7 @@
     "passport": "^0.4.1",
     "passport-local": "^1.0.0",
     "pg": "^8.5.1",
-    "sequelize": "^6.5.0"
+    "sequelize": "^6.5.0",
+    "sequelize-cli": "^6.2.0"
   }
 }
