@@ -1,4 +1,5 @@
 const db = require("./models");
+const seperator = "*******************************************************"
 
 /******************************/
 // user({
@@ -11,14 +12,36 @@ const db = require("./models");
 //     phoneNumber: DataTypes.STRING,
 //     birthay: DataTypes.STRING,
 //     location: DataTypes.STRING,
+//     about: DataTypes.STRING,
 //     courseId: DataTypes.INTEGER
 //   })
 
-db.user.findOrCreate({
-  where: {
+// db.user.findOrCreate({
+//   where: { 
+//     username: "User001",
+//     email: "GoldenPathUser01@gmail.com",
+//     password: "Password123",
+//     firstName: "Golden",
+//     lastName: "Path",
+//     phoneNumber: "0123456789",
+//     birthday: "01/22/1997",
+//     location: "USA",
+//   }
+// }).then(([newUser, created])  => {
+//   console.log(seperator)
+//   console.log(newUser)
+// })
+const createUser = (email, password) => {
+  db.user.findOrCreate({
+    where: {
+      email: email,
+      password: password
+    }
+  })
+}
 
-  },
-});
+const updateUser = (username, firstName, lastName, phone, birthday, location,)
+
 
 /******************************/
 // instructor.init({
@@ -33,22 +56,51 @@ db.user.findOrCreate({
 //     location: DataTypes.STRING
 //   }
 
-db.instructor.findOrCreate({
-  where: {
-
-  },
-});
+// db.instructor.findOrCreate({
+//   where: { 
+//     username: "GPAdmin",
+//     email: "GoldenPath@gmail.com",
+//     password: "GPassword123",
+//     firstName: "Golden",
+//     lastName: "Path",
+//     phoneNumber: "0123456789",
+//     birthday: "01/01/2021",
+//     location: "USA",
+//   }
+// }).then(([newInstructor, created])  => {
+//   console.log(seperator)
+//   console.log(newInstructor)
+// })
 
 /******************************/
 // category.init({
 //     name: DataTypes.STRING
 //   }, {
 
-db.category.findOrCreate({
-    where: {
+// Adding a subject to a category 
 
-    },
-});
+// db.category.findOrCreate({
+//   where: {
+//     name: "Programming"
+//   }
+// }).then(function([category, created]) {
+//   db.subject.findOrCreate({
+//     where: {
+//       name: "JavaScript"
+//     }
+// }).then(function([subject, created]) {
+//   category.addSubject(subject).then(function(relationInfo) {
+//     console.log(subject.name + " was added to, " + category.name )
+//   })
+// })
+// })
+
+
+// db.category.findOrCreate({
+//     where: {
+
+//     },
+// });
 
 /******************************/
 // subCategory.init({
@@ -56,11 +108,12 @@ db.category.findOrCreate({
 // categoryId: DataTypes.INTEGER
 // },
 
-db.subCategory.findOrCreate({
-    where: {
+// db.subCategory.findOrCreate({
+//     where: {
 
-    },
-  });
+//     },
+//   });
+
 /******************************/
 // course.init({
 //     name: DataTypes.STRING,
@@ -73,22 +126,97 @@ db.subCategory.findOrCreate({
 //     instructorId: DataTypes.INTEGER
 //     },
 
-db.course.findOrCreate({
+db.course.findOrCreate({ // course creation
+  where: {
+    name: "Introduction to JavaScript",
+    time: "3 Hours",
+    difficulty: "Beginner",
+    description: "An online guide to the basics of JavaScript"
+  },
+}) // end of course creation
+.then(function ([course, created]) {
+  db.category.findOrCreate({ // find or creating category
     where: {
+      name: "Programming"
+    }
+  })
+  .then(function ([category, created]) {
+    category.addCourse(course).then(function (courseCatInfo) { // add that category to course
+      db.subject.findOrCreate({ // find or creating subject
+        where: {
+          name: "JavaScript"
+        }
+      })
+      .then(function ([subject, created]) {
+        subject.addCourse(course).then(function (courseSubInfo) { // add that subject to course
+          db.instructor.findOrCreate({ // find or create instructor
+            where: {
+              username: "GPAdmin"
+            }
+          })
+          .then(function ([instructor, created]) {
+            instructor.addCourse(course).then(function (courseInstInfo) { // add that instructor to course
+              console.log(course)
+            }) // end of log 
+          }) // end of function add 
+        }) // end of function instructorfindOrCreate
+      }) // end of function subAdd
+    }) // end of function subfindOrCreate
+  }) // end of function catAdd
+}) // end of function catfindOrCreate
 
-    },
-  });
+
+
+  //       db.subject.findOrCreate({
+  //         where: {
+  //           name: "JavaScript"
+  //         }
+  //       }).then(function ([subject, created]) {
+  //         course.addSubject(subject).then(function (courseSubInfo) {
+  //             db.instructor.findOrCreate({
+  //               where: {
+  //                 username: "GPAdmin"
+  //               }
+  //             }).then(function ([instructor, created]) {
+  //               course.addInstructor(instructor).then(function (relationInstructorInfo) {
+  //                   console.log(seperator)
+  //                   console.log(`${course.name} is a category in ${category.name} and the subject is ${subject.name},
+  //             taught by ${instructor.username}`)
+  //                 })
+  //             })
+  //           })
+  //       })
+  //     })
+  //   })
+  // })
+
+    //     }).then(function ([subject, created]) {
+  //       db.instructor.findOrCreate({
+  //         where: {
+  //           username: "GPAdmin"
+  //         }
+  //       }).then(course.addCategory(category)
+  //       ).then(course.addSubject(subject)
+  //       ).then(course.addInstructor(instructor)
+  //       ).then(function (course) {
+  //         console.log(seperator)
+  //         console.log(`${course.name} is a category in ${category.name} and the subject is ${subject.name},
+  //         taught by ${instructor.username}`)
+  //       })
+  //     })
+  //   })
+  // })
 /******************************/
 //   usersCourses.init({
 //     userId: DataTypes.INTEGER,
 //     courseId: DataTypes.INTEGER
 //   },
 
-db.usersCourses.findOrCreate({
-    where: {
+// db.usersCourses.findOrCreate({
+//     where: {
 
-    },
-  });
+//     },
+//   });
 /******************************/
 // lecture.init({
 //     title: DataTypes.STRING,
@@ -101,11 +229,11 @@ db.usersCourses.findOrCreate({
 //     modelName: 'lecture',
 //   })
 
-db.lecture.findOrCreate({
-    where: {
+// db.lecture.findOrCreate({
+//     where: {
 
-    },
-  });
+//     },
+//   });
 
 /******************************/
 //   payment.init({
@@ -117,8 +245,9 @@ db.lecture.findOrCreate({
 //     instructorId: DataTypes.INTEGER
 //   },
 
-db.payment.findOrCreate({
-    where: {
+// db.payment.findOrCreate({
+//     where: {
         
-    },
-  });
+//     },
+//   })
+

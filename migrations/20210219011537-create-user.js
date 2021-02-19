@@ -29,10 +29,13 @@ module.exports = {
       phoneNumber: {
         type: Sequelize.STRING
       },
-      birthay: {
+      birthday: {
         type: Sequelize.STRING
       },
       location: {
+        type: Sequelize.STRING
+      },
+      about: {
         type: Sequelize.STRING
       },
       courseId: {

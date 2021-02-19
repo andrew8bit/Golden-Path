@@ -26,7 +26,7 @@ module.exports = {
       categoryId: {
         type: Sequelize.INTEGER
       },
-      subCategoryId: {
+      subjectId: {
         type: Sequelize.INTEGER
       },
       instructorId: {

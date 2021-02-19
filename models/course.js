@@ -11,10 +11,10 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      models.course.belongsToMany(models.user, {thought: "usersCourses"})
+      models.course.belongsToMany(models.user, {through: "usersCourses"})
       models.course.belongsTo(models.instructor)
       models.course.belongsTo(models.category)
-      models.course.belongsTo(models.subCategory)
+      models.course.belongsTo(models.subject)
       models.course.hasMany(models.lecture)
     }
   };
@@ -25,7 +25,7 @@ module.exports = (sequelize, DataTypes) => {
     difficulty: DataTypes.STRING,
     description: DataTypes.STRING,
     categoryId: DataTypes.INTEGER,
-    subCategoryId: DataTypes.INTEGER,
+    subjectId: DataTypes.INTEGER,
     instructorId: DataTypes.INTEGER
   }, {
     sequelize,
