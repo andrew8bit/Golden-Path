@@ -204,44 +204,44 @@ const deleteUser = (userId) => {
 //     instructorId: DataTypes.INTEGER
 //     },
 
-// db.course.findOrCreate({ // course creation
-//   where: {
-//     name: "Introduction to JavaScript",
-//     time: "3 Hours",
-//     difficulty: "Beginner",
-//     description: "An online guide to the basics of JavaScript"
-//   },
-// }) // end of course creation
-// .then(function ([course, created]) {
-//   db.category.findOrCreate({ // find or creating category
-//     where: {
-//       name: "Programming"
-//     }
-//   })
-//   .then(function ([category, created]) {
-//     category.addCourse(course).then(function (courseCatInfo) { // add that category to course
-//       db.subject.findOrCreate({ // find or creating subject
-//         where: {
-//           name: "JavaScript"
-//         }
-//       })
-//       .then(function ([subject, created]) {
-//         subject.addCourse(course).then(function (courseSubInfo) { // add that subject to course
-//           db.instructor.findOrCreate({ // find or create instructor
-//             where: {
-//               username: "GPAdmin"
-//             }
-//           })
-//           .then(function ([instructor, created]) {
-//             instructor.addCourse(course).then(function (courseInstInfo) { // add that instructor to course
-//               console.log(course)
-//             }) // end of log 
-//           }) // end of function add 
-//         }) // end of function instructorfindOrCreate
-//       }) // end of function subAdd
-//     }) // end of function subfindOrCreate
-//   }) // end of function catAdd
-// }) // end of function catfindOrCreate
+db.course.findOrCreate({ // course creation
+  where: {
+    name: "Introduction to JavaScript",
+    time: "3 Hours",
+    difficulty: "Beginner",
+    description: "An online guide to the basics of JavaScript"
+  },
+}) // end of course creation
+.then(function ([course, created]) {
+  db.category.findOrCreate({ // find or creating category
+    where: {
+      name: "Programming"
+    }
+  })
+  .then(function ([category, created]) {
+    category.addCourse(course).then(function (courseCatInfo) { // add that category to course
+      db.subject.findOrCreate({ // find or creating subject
+        where: {
+          name: "JavaScript"
+        }
+      })
+      .then(function ([subject, created]) {
+        subject.addCourse(course).then(function (courseSubInfo) { // add that subject to course
+          db.instructor.findOrCreate({ // find or create instructor
+            where: {
+              username: "GPAdmin"
+            }
+          })
+          .then(function ([instructor, created]) {
+            instructor.addCourse(course).then(function (courseInstInfo) { // add that instructor to course
+              console.log(course)
+            }) // end of log 
+          }) // end of function add 
+        }) // end of function instructorfindOrCreate
+      }) // end of function subAdd
+    }) // end of function subfindOrCreate
+  }) // end of function catAdd
+}) // end of function catfindOrCreate
 
 
 
