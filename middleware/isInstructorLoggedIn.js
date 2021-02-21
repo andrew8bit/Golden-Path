@@ -1,5 +1,5 @@
 function isInstructorLoggedIn(req, res, next) {
-    if (!req.instructor) {
+    if (req.user.role != "instructor") {
         req.flash('error', 'You must be signed in to access page');
         res.redirect('/instructor/login');
     } else {

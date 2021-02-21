@@ -16,12 +16,13 @@ function SessionConstructor(userId, userGroup, details) {
 passport.serializeUser((userObject, cb) => {
     // userObject can be any model
     let userGroup = "students";
-    let userPrototype = Object.getPrototypeOf(userObject);
+    console.log(userObject)
+    let userPrototype = userObject.role;
 
-    if (userPrototype === User.prototype) {
+    if (userPrototype === "students") {
         console.log("set prototype of students")
         userGroup = "students";
-    } else if (userPrototype === Instructor.prototype) {
+    } else if (userPrototype === "instructor") {
         console.log("set prototype of instructor")
         userGroup = "instructor"
     } 
@@ -49,10 +50,11 @@ passport.deserializeUser(function (sessionConstructor, cb) {
             console.log(error);
         })
     } else if(sessionConstructor.userGroup === 'instructor') {
-        db.instructor.findByPk(sessionConstructor.id)
-        .then(user => {
-            if (user) {
-                cb(null, user);
+        db.instructor.findByPk(sessionConstructor.userId)
+        .then(instructor => {
+            if (instructor) {
+                console.log('deserialized sucess')
+                cb(null, instructor);
             }
             console.log('Instructor is null...');
         })
@@ -97,7 +99,7 @@ passport.use('instructor-local', new LocalStrategy({
         if (!instructor || !instructor.validPassword(password)) {
             cb(null, false);
         } else {
-            cb(null, user);
+            cb(null, instructor);
         }
     })
     .catch(error => {

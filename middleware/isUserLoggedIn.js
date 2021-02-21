@@ -1,5 +1,5 @@
 function isUserLoggedIn(req, res, next) {
-    if (!req.user) {
+    if (req.user.role != "student") {
         req.flash('error', 'You must be signed in to access page');
         res.redirect('/student/login');
     } else {

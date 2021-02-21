@@ -25,6 +25,19 @@ instructorRouter.use(passport.initialize()); // Initialize passport
 instructorRouter.use(passport.session()); // Add a session
 // Flash 
 instructorRouter.use(flash());
+instructorRouter.use((req, res, next) => {
+  console.log(res.locals);
+  res.locals.alerts = req.flash();
+  res.locals.currentUser = req.user;
+  next();
+});
+
+instructorRouter.use(session(sessionObject));
+// Passport
+instructorRouter.use(passport.initialize()); // Initialize passport
+instructorRouter.use(passport.session()); // Add a session
+// Flash 
+instructorRouter.use(flash());
 
 instructorRouter.get('/login', (req, res) => {
   res.render('auth/instructor/login'); // this is a form
@@ -36,23 +49,31 @@ instructorRouter.get('/logout', (req, res) => {
   res.redirect('/');
 });
 
-instructorRouter.get('/profile-edit', (req, res) => {
+instructorRouter.get('/signup', (req, res) => {
+  res.render('auth/instructor/signup'); // this is a form
+});
+
+instructorRouter.get('/profile-edit', isInstructorLoggedIn, (req, res) => {
   res.render('auth/instructor/profile-edit'); // this is a form
 });
-instructorRouter.get('/my-courses', (req, res) => {
+
+instructorRouter.get('/profile', isInstructorLoggedIn, (req, res) => {
+  res.render('auth/instructor/profile'); // this is a form
+});
+instructorRouter.get('/my-courses', isInstructorLoggedIn, (req, res) => {
   res.render('auth/instructor/my-courses'); // this is a form
 });
 
-instructorRouter.get('/security', (req, res) => {
+instructorRouter.get('/security', isInstructorLoggedIn, (req, res) => {
   res.render('auth/instructor/security'); // this is a form
 });
-instructorRouter.get('/payment-method', (req, res) => {
+instructorRouter.get('/payment-method', isInstructorLoggedIn, (req, res) => {
   res.render('auth/instructor/payment-method'); // this is a form
 });
-instructorRouter.get('/delete-profile', (req, res) => {
+instructorRouter.get('/delete-profile', isInstructorLoggedIn, (req, res) => {
   res.render('auth/instructor/delete-profile'); // this is a form
 });
-instructorRouter.get('/add-course', (req, res) => {
+instructorRouter.get('/add-course', isInstructorLoggedIn, (req, res) => {
   res.render('auth/instructor/add-course'); // this is a form
 });
 
@@ -72,11 +93,11 @@ instructorRouter.post('/signup', (req, res) => {
       console.log(`${instructor.username} was created....`);
       // flash messages
       const successObject = {
-        successRedirect: '/instructor',
+        successRedirect: '/instructor/profile-edit',
         successFlash: `Welcome ${instructor.username}. Account was created and logging in...`
       }
       // passport authenicate
-      passport.authenticate('local', successObject)(req, res);
+      passport.authenticate('instructor-local', successObject)(req, res);
     } else {
       // Send back email already exists
       req.flash('error', 'Email already exists');
@@ -91,20 +112,14 @@ instructorRouter.post('/signup', (req, res) => {
   });
 });
 
-instructorRouter.post('/login', passport.authenticate('local', {
+instructorRouter.post('/login', passport.authenticate('instructor-local', {
   successRedirect: '/',
   failureRedirect: '/instructor/login',
   successFlash: 'Welcome back ...',
   failureFlash: 'Either email or password is incorrect' 
 }));
 
-instructorRouter.get('/signup', (req, res) => {
-  res.render('auth/instructor/signup'); // this is a form
-});
 
-instructorRouter.get('/profile-edit', (req, res) => {
-  res.render('auth/instructor/profile-edit'); // this is a form
-});
 
 
 module.exports = instructorRouter;

@@ -1,4 +1,5 @@
 'use strict';
+const bcrypt = require('bcrypt');
 const {
   Model
 } = require('sequelize');
@@ -41,6 +42,7 @@ module.exports = (sequelize, DataTypes) => {
         }
       }
     },
+    tag:DataTypes.STRING,
     password: {
       type: DataTypes.STRING,
       validate: {
@@ -56,7 +58,6 @@ module.exports = (sequelize, DataTypes) => {
     birthday: DataTypes.STRING,
     location: DataTypes.STRING,
     about: DataTypes.STRING,
-    courseId: DataTypes.INTEGER,
   }, {
     sequelize,
     modelName: 'instructor',
