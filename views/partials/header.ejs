@@ -510,12 +510,15 @@
 				   aria-labelledby="navbarAccount"
 				   >
 				   <!------------------------- Account Content -------------------------->
-				   <li>
-					  <h4 class="dropdown-header">Instructors</h4>
-				   </li>
-				   <% if (currentUser) { %>
-
-					<li class="dropdown-submenu dropright">
+				   		<% if(!currentUser || currentUser.role === "instructor") {%>
+							<li>
+								<h4 class="dropdown-header">Instructors</h4>
+							</li>
+						<% } %>
+							 
+						<% if (currentUser) { %>
+							<% if(currentUser.role === "instructor") { %>
+								<li class="dropdown-submenu dropright">
 					   <a
 						  class="dropdown-item dropdown-list-group-item dropdown-toggle"
 						  href="#!"
@@ -535,23 +538,23 @@
 						  <li>
 							 <a
 								class="dropdown-item"
-								href="/instructor/profile-edit"
+								href="/instructor/profile-edit/<%= currentUser.id %>"
 								>
-							 Dashboard</a
-								>
+							 Dashboard</a>
+								
 						  </li>
 						  <li>
 							 <a
 								class="dropdown-item"
-								href="/instructor/profile"
+								href="/instructor/profile/<%= currentUser.id %>"
 								>
-							 View Profile</a
-								>
+							 View Profile</a>
+								
 						  </li>
 						  <li>
 							 <a
 								class="dropdown-item"
-								href="/instructor/my-courses/"
+								href="/instructor/my-courses/<%= currentUser.id %>"
 								>
 							 My Courses
 							 </a>
@@ -559,93 +562,93 @@
 						  <li>
 							 <a
 								class="btn btn-primary btn-sm d-none d-md-block"
-								href="/instructor/add-course/"
+								href="/instructor/add-course/<%= currentUser.id %>"
 								>
 							 Add a course
 							 </a>
 						  </li>
 					   </ul>
 					</li>
-				   <% } %>
-
-				   <li>
-					<a class="dropdown-item" href="/instructor/login">
-					Sign In
-					</a>
-				 </li>
-				 <li>
-					<a class="dropdown-item" href="/instructor/signup">
-					Sign Up
-					</a>
-				 </li>
-				 <li>
-					<hr class="mx-3" />
-				 </li>
+							<%}%>
+						<%}%>
+				<% if(!currentUser) { %>
+					<li>
+					 <a class="dropdown-item" href="/instructor/login/">
+					 Sign In
+					 </a>
+				  </li>
+				  <li>
+					 <a class="dropdown-item" href="/instructor/signup/">
+					 Sign Up
+					 </a>
+				  </li>
+				  <li>
+					 <hr class="mx-3" />
+				  </li>
+				<% } %>
 				 <% if(currentUser) { %>
-					 <li>
-						<a class="dropdown-item" href="/instrutor/logout">
-						Log Out
-						</a>
-					 </li>
-					 <li>
-						<hr class="mx-3" />
-					 </li>
+					<% if(currentUser.role === "instructor") { %>
+						<li>
+						   <a class="dropdown-item" href="/instructor/logout/<%= currentUser.id %>">
+						   Log Out
+						   </a>
+						</li>
+						<li>
+						   <hr class="mx-3" />
+						</li>
+
+						<% } %>
 				 <% } %>
-				 <li>
-					<h4 class="dropdown-header">Students</h4>
-				 </li>
-				 <% if (currentUser) { %>
-					<li class="dropdown-submenu dropright">
-					   <a
-						  class="dropdown-item dropdown-list-group-item dropdown-toggle"
-						  href="#!"
-						  >
-					  Settings
-					   </a>
-					   <ul class="dropdown-menu">
-						  <li class="text-wrap">
-							 <h5 class="dropdown-header text-dark">Students</h5>
-							 <p class="dropdown-text mb-0">
-								Student dashboard to edit profile and manage your courses. 
-							 </p>
-						  </li>
-						  <li>
-							 <a
-								class="dropdown-item"
-								href="/student/dashboard/"
-								>
-							 Dashboard</a
-								>
-						  </li>
-						  <li>
-						  <li>
-							 <a
-								class="dropdown-item"
-								href="/student/profile-edit/"
-								>
-							 Edit Profile</a
-								>
-						  </li>
-						  <li>
-							 <a
-								class="dropdown-item"
-								href="/student/payment-method/"
-								>
-							 Payments</a
-								>
-						  </li>
-						  <li>
-						  <li>
-							 <a
-								class="dropdown-item"
-								href="./pages/dashboard-student.html"
-								>
-							 My Path</a
-								>
-						  </li>
-					   </ul>
+				 <% if(!currentUser || currentUser.role=== "student") { %>
+					<li>
+					   <h4 class="dropdown-header">Students</h4>
 					</li>
-				 <%} %>
+				 <% } %>
+				 <% if (currentUser) { %> 
+					<% if(currentUser.role === "student") { %>
+						<li class="dropdown-submenu dropright">
+						   <a
+							  class="dropdown-item dropdown-list-group-item dropdown-toggle"
+							  href="#!"
+							  >
+						  Settings
+						   </a>
+						   <ul class="dropdown-menu">
+							  <li class="text-wrap">
+								 <h5 class="dropdown-header text-dark">Students</h5>
+								 <p class="dropdown-text mb-0">
+									Student dashboard to edit profile and manage your courses. 
+								 </p>
+							  </li>
+							  <li>
+								 <a
+									class="dropdown-item"
+									href="/student/dashboard/<%= currentUser.id %>"
+									>
+								 Dashboard</a
+									>
+							  </li>
+							  <li>
+							  <li>
+								 <a
+									class="dropdown-item"
+									href="/student/profile-edit/<%= currentUser.id %>"
+									>
+								 Edit Profile</a
+									>
+							  </li>
+							  <li>
+								 <a
+									class="dropdown-item"
+									href="/student/payment-method/<%= currentUser.id %>"
+									>
+								 Payments</a
+									>
+							  </li>
+						   </ul>
+						</li>
+					<% } %>
+				 <% } %>
 				   <% if (!currentUser) { %>
 					<li>
 					   <a class="dropdown-item" href="/student/login">
@@ -663,11 +666,13 @@
 				   <% } %> 
 
 				 <% if (currentUser) { %>
-					 <li>
-						<a class="dropdown-item" href="/student/logout">
-						Log Out
-						</a>
-					 </li>
+					<% if (currentUser.role === "student") { %>
+						<li>
+						   <a class="dropdown-item" href="/student/logout/<%= currentUser.id %>">
+						   Log Out
+						   </a>
+						</li>
+					<% } %>
 				 <% } %>
 				</ul>
 			 </li>

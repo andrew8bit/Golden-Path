@@ -17,7 +17,6 @@ const createInstructor = (email, password) => {
 };
 
 const updateInstructor = (
-  userId,
   username,
   tag,
   firstName,
@@ -25,7 +24,8 @@ const updateInstructor = (
   phoneNumber,
   birthday,
   location,
-  about
+  about,
+  userId,
 ) => {
   db.instructor
     .update(
@@ -46,7 +46,9 @@ const updateInstructor = (
       }
     )
     .then(function (user) {
-      console.log(user);
+      console.log('HELPERUSER')
+      console.log(user)
+      return user;
     });
 };
 

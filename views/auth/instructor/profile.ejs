@@ -18,10 +18,16 @@
 						</div>
 						<div class="ml-3">
 							<div class="d-flex align-items-center">
-								<h3 class="mb-0 font-weight-bold mr-2">Instructor #001</h3>
+								<h3 class="mb-0 font-weight-bold mr-2"><%= currentUser.username %></h3>
 								<span class="badge badge-light-primary text-primary">Instructor</span>
 							</div>
-							<span class="font-size-xs">Insturctor tag</span>
+							<p class="mb-0 d-block">
+								<% if (currentUser.tag != null) { %>
+									<%= currentUser.tag %>
+									<% } else { %>
+										Golden Path Instructor 
+										<% } %>
+							</p>
 						</div>
 					</div>
 				</div>

@@ -7,6 +7,7 @@ const flash = require('connect-flash');
 const consoleSep = '****************************************';
 const helper = require('./helper')
 const bodyParser = require('body-parser')
+const methodOverride = require('method-override');
 
 
 const app = express();
@@ -55,7 +56,8 @@ app.use('/student', require('./controllers/student'));
 app.use('/instructor', require('./controllers/instructor'));
 
 app.get('/', (req, res) => {
-  res.render('homepage');
+  
+  res.render('homepage', );
 });
 
 app.get('/results', (req, res) => {

@@ -48,27 +48,27 @@ studentRouter.get('/signup', (req, res) => {
   res.render('auth/student/signup'); // this is a form
 });
 
-studentRouter.get('/profile-edit', isUserLoggedIn, (req, res) => {
+studentRouter.get('/profile-edit/:id', isUserLoggedIn, (req, res) => {
   const { id, name, email } = req.user.get()
   res.render('auth/student/profile-edit' , { id, name, email }); // this is a form
 });
-studentRouter.get('/dashboard', isUserLoggedIn, (req, res) => {
+studentRouter.get('/dashboard/:id', isUserLoggedIn, (req, res) => {
   res.render('auth/student/dashboard'); // this is a form
 });
-studentRouter.get('/security', isUserLoggedIn,(req, res) => {
+studentRouter.get('/security/:id', isUserLoggedIn,(req, res) => {
   res.render('auth/student/security'); // this is a form
 });
-studentRouter.get('/payment-method', isUserLoggedIn,(req, res) => {
+studentRouter.get('/payment-method/:id', isUserLoggedIn,(req, res) => {
   res.render('auth/student/payment-method'); // this is a form
 });
-studentRouter.get('/delete-profile', isUserLoggedIn,(req, res) => {
+studentRouter.get('/delete-profile/:id', isUserLoggedIn,(req, res) => {
   res.render('auth/student/delete-profile'); // this is a form
 });
 
 
 
 // What routes do we need (post routes)
-studentRouter.post('/signup', (req, res,) => {
+studentRouter.post('/signup/:id', (req, res,) => {
   // we now have access to the user info (req.body);
   // console.log(req.body);
   const { email, username, password } = req.body; // goes and us access to whatever key/value inside of the object (req.body)
@@ -82,7 +82,7 @@ studentRouter.post('/signup', (req, res,) => {
       console.log(`${user.username} was created....`);
       // flash messages
       const successObject = {
-        successRedirect: '/student/profile-edit',
+        successRedirect: `/student/profile-edit/${user.id}`,
         successFlash: `Welcome ${user.username}. Account was created and logging in...`
       }
       // passport authenicate

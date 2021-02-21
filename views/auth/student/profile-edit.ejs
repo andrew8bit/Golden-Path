@@ -14,21 +14,19 @@
                         </div>
                         <div class="lh-1">
                             <h2 class="mb-0">
-                                User
-                                <a href="#!" class="text-decoration-none" data-toggle="tooltip" data-placement="top" title="Beginner">
-                                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <rect x="3" y="8" width="2" height="6" rx="1" fill="#754FFE"></rect>
-                                        <rect x="7" y="5" width="2" height="9" rx="1" fill="#DBD8E9"></rect>
-                                        <rect x="11" y="2" width="2" height="12" rx="1" fill="#DBD8E9"></rect>
-                                    </svg>
+                                <%= currentUser.username %>
                                 </a>
                             </h2>
-                            <p class="mb-0 d-block">@user001</p>
+                            <% if(currentUser.tag === undefined) { %>
+                                <p class="mb-0 d-block">Student</p>
+                            <% } else { %>
+                                <p class="mb-0 d-block"><%= currentUser.tag %></p>
+                            <% } %>
                         </div>
                     </div>
                     <div>
                     <div>
-                        <a href="/student/dashboard" class="btn btn-outline-primary btn-sm d-none d-md-block">Go to
+                        <a href="/student/dashboard/<%=currentUser.id %>" class="btn btn-outline-primary btn-sm d-none d-md-block">Go to
                             Student Dashboard</a>
                     </div>
                 </div>
@@ -59,24 +57,24 @@
                             <ul class="list-unstyled ml-n2 mb-0">
                                 <!-- Nav item -->
                                 <li class="nav-item active">
-                                    <a class="nav-link" href="/student/profile-edit/"><i class="fe fe-settings nav-icon"></i>Edit Profile</a>
+                                    <a class="nav-link" href="/student/profile-edit/<%= currentUser.id %> "><i class="fe fe-settings nav-icon"></i>Edit Profile</a>
                                 </li>
                                 <!-- Nav item -->
                                 <li class="nav-item">
-                                    <a class="nav-link" href="/student/security/"><i class="fe fe-user nav-icon"></i>Security</a>
+                                    <a class="nav-link" href="/student/security/<%= currentUser.id %> "><i class="fe fe-user nav-icon"></i>Security</a>
                                 </li>
                                 <!-- Nav item -->
                                 <li class="nav-item">
-                                    <a class="nav-link" href="/student/payment-method/"><i class="fe fe-credit-card nav-icon"></i>Payment</a>
+                                    <a class="nav-link" href="/student/payment-method/<%= currentUser.id %> "><i class="fe fe-credit-card nav-icon"></i>Payment</a>
                                 </li>
                                 <!-- Nav item -->
                                 <li class="nav-item">
-                                    <a class="nav-link" href="/student/delete-profile/"><i class="fe fe-trash nav-icon"></i>Delete
+                                    <a class="nav-link" href="/student/delete-profile/<%= currentUser.id %> "><i class="fe fe-trash nav-icon"></i>Delete
                                         Profile</a>
                                 </li>
                                 <!-- Nav item -->
                                 <li class="nav-item">
-                                    <a class="nav-link" href="/student/logout"><i class="fe fe-power nav-icon"></i>Sign Out</a>
+                                    <a class="nav-link" href="/student/logout/<%= currentUser.id %> "><i class="fe fe-power nav-icon"></i>Sign Out</a>
                                 </li>
                             </ul>
                         </div>
@@ -160,7 +158,7 @@
                                     <textarea name= "aboutInput" id="aboutnput" class="form-control"
                                        placeholder="Tell us about yourself" rows="4"></textarea>
                                  </div>
-                              </form>
+                                 <label class="hidden" name ="id" id="id" value="<%=currentUser.id%>"></label>
                                     <!-- Button -->
                                     <button class="btn btn-primary" type="submit">
                                         Update Profile

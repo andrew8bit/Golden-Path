@@ -97,6 +97,7 @@ passport.use('instructor-local', new LocalStrategy({
     })
     .then(instructor => {
         if (!instructor || !instructor.validPassword(password)) {
+            console.log('WOAH WHAT HAPPEN')
             cb(null, false);
         } else {
             cb(null, instructor);

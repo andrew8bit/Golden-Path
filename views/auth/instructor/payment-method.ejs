@@ -14,16 +14,17 @@
                         </div>
                         <div class="lh-1">
                             <h2 class="mb-0">
-                                Instructor
-                                <a href="#!" class="text-decoration-none" data-toggle="tooltip" data-placement="top" title="Beginner">
-                                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <rect x="3" y="8" width="2" height="6" rx="1" fill="#754FFE"></rect>
-                                        <rect x="7" y="5" width="2" height="9" rx="1" fill="#DBD8E9"></rect>
-                                        <rect x="11" y="2" width="2" height="12" rx="1" fill="#DBD8E9"></rect>
-                                    </svg>
+                                <%= currentUser.username %>
+								<span class="badge badge-light-primary text-primary">Instructor</span>
                                 </a>
                             </h2>
-                            <p class="mb-0 d-block">Golden Path Instructor</p>
+                            <p class="mb-0 d-block">
+                            <% if (currentUser.tag != null) { %>
+                                <%= currentUser.tag %>
+                                <% } else { %>
+                                    Golden Path Instructor 
+                                    <% } %>
+                        </p>
                         </div>
                     </div>
                     <div>
@@ -59,27 +60,27 @@
                             <ul class="list-unstyled ml-n2 mb-0">
 								<!-- Nav Item instructor-->
 								<li class="nav-item">
-									<a class="nav-link" href="/instructor/my-courses/"><i class="fe fe-book nav-icon"></i>My Courses</a>
+									<a class="nav-link" href="/instructor/my-courses/<%= currentUser.id %> ><i class="fe fe-book nav-icon"></i>My Courses</a>
                                 <!-- Nav item -->
                                 <li class="nav-item">
-                                    <a class="nav-link" href="/instructor/profile-edit/"><i class="fe fe-settings nav-icon"></i>Edit Profile</a>
+                                    <a class="nav-link" href="/instructor/profile-edit/<%= currentUser.id %> "><i class="fe fe-settings nav-icon"></i>Edit Profile</a>
                                 </li>
                                 <!-- Nav item -->
                                 <li class="nav-item">
-                                    <a class="nav-link" href="/instructor/security/"><i class="fe fe-user nav-icon"></i>Security</a>
+                                    <a class="nav-link" href="/instructor/security/<%= currentUser.id %> "><i class="fe fe-user nav-icon"></i>Security</a>
                                 </li>
                                 <!-- Nav item -->
                                 <li class="nav-item active">
-                                    <a class="nav-link" href="/instructor/payment-method/"><i class="fe fe-credit-card nav-icon"></i>Payment</a>
+                                    <a class="nav-link" href="/instructor/payment-method/<%= currentUser.id %> "><i class="fe fe-credit-card nav-icon"></i>Payment</a>
                                 </li>
                                 <!-- Nav item -->
                                 <li class="nav-item">
-                                    <a class="nav-link" href="/instructor/delete-profile/"><i class="fe fe-trash nav-icon"></i>Delete
+                                    <a class="nav-link" href="/instructor/delete-profile/<%= currentUser.id %> "><i class="fe fe-trash nav-icon"></i>Delete
                                         Profile</a>
                                 </li>
                                 <!-- Nav item -->
                                 <li class="nav-item">
-                                    <a class="nav-link" href="/"><i class="fe fe-power nav-icon"></i>Sign Out</a>
+                                    <a class="nav-link" href="/instructor/logout/<%= currentUser.id %> "><i class="fe fe-power nav-icon"></i>Sign Out</a>
                                 </li>
                             </ul>
                         </div>
