@@ -513,57 +513,60 @@
 				   <li>
 					  <h4 class="dropdown-header">Instructors</h4>
 				   </li>
-				   <li class="dropdown-submenu dropright">
-					  <a
-						 class="dropdown-item dropdown-list-group-item dropdown-toggle"
-						 href="#!"
-						 >
-					  Settings
-					  </a>
-					  <ul class="dropdown-menu">
-						 <li class="text-wrap">
-							<h5 class="dropdown-header text-dark">Instructor</h5>
-							<p class="dropdown-text mb-0">
-							   Instructor dashboard to manage courses and payments. 
-							</p>
-						 </li>
-						 <li>
-							<hr class="mx-3" />
-						 </li>
-						 <li>
-							<a
-							   class="dropdown-item"
-							   href="/instructor/profile-edit"
-							   >
-							Dashboard</a
-							   >
-						 </li>
-						 <li>
-							<a
-							   class="dropdown-item"
-							   href="/instructor/profile"
-							   >
-							View Profile</a
-							   >
-						 </li>
-						 <li>
-							<a
-							   class="dropdown-item"
-							   href="/instructor/my-courses/"
-							   >
-							My Courses
-							</a>
-						 </li>
-						 <li>
-							<a
-							   class="btn btn-primary btn-sm d-none d-md-block"
-							   href="/instructor/add-course/"
-							   >
-							Add a course
-							</a>
-						 </li>
-					  </ul>
-				   </li>
+				   <% if (currentUser) { %>
+
+					<li class="dropdown-submenu dropright">
+					   <a
+						  class="dropdown-item dropdown-list-group-item dropdown-toggle"
+						  href="#!"
+						  >
+					   Settings
+					   </a>
+					   <ul class="dropdown-menu">
+						  <li class="text-wrap">
+							 <h5 class="dropdown-header text-dark">Instructor</h5>
+							 <p class="dropdown-text mb-0">
+								Instructor dashboard to manage courses and payments. 
+							 </p>
+						  </li>
+						  <li>
+							 <hr class="mx-3" />
+						  </li>
+						  <li>
+							 <a
+								class="dropdown-item"
+								href="/instructor/profile-edit"
+								>
+							 Dashboard</a
+								>
+						  </li>
+						  <li>
+							 <a
+								class="dropdown-item"
+								href="/instructor/profile"
+								>
+							 View Profile</a
+								>
+						  </li>
+						  <li>
+							 <a
+								class="dropdown-item"
+								href="/instructor/my-courses/"
+								>
+							 My Courses
+							 </a>
+						  </li>
+						  <li>
+							 <a
+								class="btn btn-primary btn-sm d-none d-md-block"
+								href="/instructor/add-course/"
+								>
+							 Add a course
+							 </a>
+						  </li>
+					   </ul>
+					</li>
+				   <% } %>
 
 				   <li>
 					<a class="dropdown-item" href="/instructor/login">
@@ -578,85 +581,94 @@
 				 <li>
 					<hr class="mx-3" />
 				 </li>
-				 <li>
-					<a class="dropdown-item" href="/instrutor/logout">
-					Log Out
-					</a>
-				 </li>
-				 <li>
-					<hr class="mx-3" />
-				 </li>
+				 <% if(currentUser) { %>
+					 <li>
+						<a class="dropdown-item" href="/instrutor/logout">
+						Log Out
+						</a>
+					 </li>
+					 <li>
+						<hr class="mx-3" />
+					 </li>
+				 <% } %>
 				 <li>
 					<h4 class="dropdown-header">Students</h4>
 				 </li>
-				   <li class="dropdown-submenu dropright">
-					  <a
-						 class="dropdown-item dropdown-list-group-item dropdown-toggle"
-						 href="#!"
-						 >
-					 Settings
-					  </a>
-					  <ul class="dropdown-menu">
-						 <li class="text-wrap">
-							<h5 class="dropdown-header text-dark">Students</h5>
-							<p class="dropdown-text mb-0">
-							   Student dashboard to edit profile and manage your courses. 
-							</p>
-						 </li>
-						 <li>
-							<a
-							   class="dropdown-item"
-							   href="/student/dashboard/"
-							   >
-							Dashboard</a
-							   >
-						 </li>
-						 <li>
-						 <li>
-							<a
-							   class="dropdown-item"
-							   href="/student/profile-edit/"
-							   >
-							Edit Profile</a
-							   >
-						 </li>
-						 <li>
-							<a
-							   class="dropdown-item"
-							   href="/student/payment-method/"
-							   >
-							Payments</a
-							   >
-						 </li>
-						 <li>
-						 <li>
-							<a
-							   class="dropdown-item"
-							   href="./pages/dashboard-student.html"
-							   >
-							My Path</a
-							   >
-						 </li>
-					  </ul>
-				   </li>
-				   <li>
-					  <a class="dropdown-item" href="/student/login">
-					  Sign In
-					  </a>
-				   </li>
-				   <li>
-					  <a class="dropdown-item" href="/student/signup">
-					  Sign Up
-					  </a>
-				   </li>
-				   <li>
-					<hr class="mx-3" />
-				 </li>
-				 <li>
-					<a class="dropdown-item" href="/student/logout">
-					Log Out
-					</a>
-				 </li>
+				 <% if (currentUser) { %>
+					<li class="dropdown-submenu dropright">
+					   <a
+						  class="dropdown-item dropdown-list-group-item dropdown-toggle"
+						  href="#!"
+						  >
+					  Settings
+					   </a>
+					   <ul class="dropdown-menu">
+						  <li class="text-wrap">
+							 <h5 class="dropdown-header text-dark">Students</h5>
+							 <p class="dropdown-text mb-0">
+								Student dashboard to edit profile and manage your courses. 
+							 </p>
+						  </li>
+						  <li>
+							 <a
+								class="dropdown-item"
+								href="/student/dashboard/"
+								>
+							 Dashboard</a
+								>
+						  </li>
+						  <li>
+						  <li>
+							 <a
+								class="dropdown-item"
+								href="/student/profile-edit/"
+								>
+							 Edit Profile</a
+								>
+						  </li>
+						  <li>
+							 <a
+								class="dropdown-item"
+								href="/student/payment-method/"
+								>
+							 Payments</a
+								>
+						  </li>
+						  <li>
+						  <li>
+							 <a
+								class="dropdown-item"
+								href="./pages/dashboard-student.html"
+								>
+							 My Path</a
+								>
+						  </li>
+					   </ul>
+					</li>
+				 <%} %>
+				   <% if (!currentUser) { %>
+					<li>
+					   <a class="dropdown-item" href="/student/login">
+					   Sign In
+					   </a>
+					</li>
+					<li>
+					   <a class="dropdown-item" href="/student/signup">
+					   Sign Up
+					   </a>
+					</li>
+					<li>
+					 <hr class="mx-3" />
+				  </li>
+				   <% } %> 
+
+				 <% if (currentUser) { %>
+					 <li>
+						<a class="dropdown-item" href="/student/logout">
+						Log Out
+						</a>
+					 </li>
+				 <% } %>
 				</ul>
 			 </li>
 			 <li class="nav-item dropdown">
@@ -719,6 +731,14 @@
 				placeholder="Search Courses"
 				/>
 		  </form>
+		  <ul class="navbar-nav" style="align-self: center; padding-left: 2em;">
+		  <% if (!currentUser) { %>
+			<h5 class="nav-item dropdown text-wrap" > Welcome to Golden Path </h5>
+		  <% } else { %>
+			<h5 class="nav-item dropdown text-wrap"> Hello <%= currentUser.username %> </h5>
+		  <% } %>
+		  </ul>
+
 	   </div>
 	</div>
  </nav>

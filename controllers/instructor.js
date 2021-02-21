@@ -1,16 +1,30 @@
-
 require('dotenv').config();
 const express = require('express');
 const layouts = require('express-ejs-layouts');
 const passport = require('../config/ppConfig');
+const session = require('express-session');
 const instructorRouter = express.Router();
+const helper = require('../helper')
+const bodyParser = require('body-parser')
+const flash = require('connect-flash');
 
 // import database
 const db = require('../models');
 
-instructorRouter.get('/signup', (req, res) => {
-  res.render('auth/instructor/signup'); // this is a form
-});
+const SECRET_SESSION = process.env.SECRET_SESSION;
+const isInstructorLoggedIn = require('../middleware/isInstructorLoggedIn');
+const sessionObject = {
+  secret: SECRET_SESSION,
+  resave: false,
+  saveUninitialized: true
+}
+
+instructorRouter.use(session(sessionObject));
+// Passport
+instructorRouter.use(passport.initialize()); // Initialize passport
+instructorRouter.use(passport.session()); // Add a session
+// Flash 
+instructorRouter.use(flash());
 
 instructorRouter.get('/login', (req, res) => {
   res.render('auth/instructor/login'); // this is a form
@@ -22,15 +36,13 @@ instructorRouter.get('/logout', (req, res) => {
   res.redirect('/');
 });
 
-instructorRouter.get('/profile', (req, res) => {
-  res.render('auth/instructor/profile'); // this is a form
+instructorRouter.get('/profile-edit', (req, res) => {
+  res.render('auth/instructor/profile-edit'); // this is a form
 });
 instructorRouter.get('/my-courses', (req, res) => {
   res.render('auth/instructor/my-courses'); // this is a form
 });
-instructorRouter.get('/profile-edit', (req, res) => {
-  res.render('auth/instructor/profile-edit'); // this is a form
-});
+
 instructorRouter.get('/security', (req, res) => {
   res.render('auth/instructor/security'); // this is a form
 });
@@ -49,33 +61,33 @@ instructorRouter.get('/add-course', (req, res) => {
 instructorRouter.post('/signup', (req, res) => {
   // we now have access to the user info (req.body);
   // console.log(req.body);
-  const { email, name, password } = req.body; // goes and us access to whatever key/value inside of the object (req.body)
-  db.user.findOrCreate({
+  const { username, email, password } = req.body; // goes and us access to whatever key/value inside of the object (req.body)
+  db.instructor.findOrCreate({
     where: { email },
-    defaults: { name, password }
+    defaults: { username, password }
   })
-  .then(([user, created]) => {
+  .then(([instructor, created]) => {
     if (created) {
       // if created, success and we will redirect back to / page
-      console.log(`${user.name} was created....`);
+      console.log(`${instructor.username} was created....`);
       // flash messages
       const successObject = {
-        successRedirect: '/',
-        successFlash: `Welcome ${user.name}. Account was created and logging in...`
+        successRedirect: '/instructor',
+        successFlash: `Welcome ${instructor.username}. Account was created and logging in...`
       }
       // passport authenicate
       passport.authenticate('local', successObject)(req, res);
     } else {
       // Send back email already exists
       req.flash('error', 'Email already exists');
-      res.redirect('/auth/signup');
+      res.redirect('/instructor/signup');
     }
   })
   .catch(error => {
     console.log('**************Error');
     console.log(error);
     req.flash('error', 'Either email or password is incorrect. Please try again.');
-    res.redirect('/auth/signup');
+    res.redirect('/instructor/signup');
   });
 });
 
@@ -85,6 +97,14 @@ instructorRouter.post('/login', passport.authenticate('local', {
   successFlash: 'Welcome back ...',
   failureFlash: 'Either email or password is incorrect' 
 }));
+
+instructorRouter.get('/signup', (req, res) => {
+  res.render('auth/instructor/signup'); // this is a form
+});
+
+instructorRouter.get('/profile-edit', (req, res) => {
+  res.render('auth/instructor/profile-edit'); // this is a form
+});
 
 
 module.exports = instructorRouter;

@@ -1,4 +1,5 @@
 'use strict';
+const bcrypt = require('bcrypt');
 const {
   Model
 } = require('sequelize');
@@ -15,10 +16,41 @@ module.exports = (sequelize, DataTypes) => {
     }
   };
   user.init({
-    username: DataTypes.STRING,
+    username: {
+      type: DataTypes.STRING,
+      unique: true,
+      validate: {
+        len: {
+          args: [1,36],
+          msg: 'Username must be between 1 and 36 characters'
+        }
+      }
+    },
+    role: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      defaultValue: "student"
+    },
     img: DataTypes.STRING,
-    email: DataTypes.STRING,
-    password: DataTypes.STRING,
+    email: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      unique: true,
+      validate: {
+        isEmail: {
+          msg: 'Invalid email'
+        }
+      }
+    },
+    password: {
+      type: DataTypes.STRING,
+      validate: {
+        len: {
+          args: [8,36],
+          msg: 'Password must be between 8 and 36 characters'
+        }
+      }
+    },
     firstName: DataTypes.STRING,
     lastName: DataTypes.STRING,
     phoneNumber: DataTypes.STRING,
@@ -30,5 +62,23 @@ module.exports = (sequelize, DataTypes) => {
     sequelize,
     modelName: 'user',
   });
+  
+  user.addHook('beforeCreate', (pendingUser) => {
+    let hash = bcrypt.hashSync(pendingUser.password, 12);
+    pendingUser.password = hash;
+  });
+
+  user.prototype.validPassword = function(typedPassword) {
+    let isCorrectPassword = bcrypt.compareSync(typedPassword, this.password);
+
+    return isCorrectPassword;
+  }
+
+  user.prototype.toJSON = function() {
+    let userData = this.get();
+    delete userData.password;
+
+    return userData;
+  }
   return user;
 };

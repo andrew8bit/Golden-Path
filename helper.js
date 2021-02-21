@@ -214,8 +214,7 @@ const createCourse = () => {
 };
 
 const courseSearch = (search) => {
-    let searchArray = search.split(" ")
-    let regexSearch = new RegExp(searchArray.join("|", " "))
+    let regexSearch = new RegExp(search.split(" ").join("|", " "))
     console.log(regexSearch)
     db.course.findAll({
     where : {
@@ -225,9 +224,6 @@ const courseSearch = (search) => {
                     [Op.iRegexp]: `${regexSearch}`
                 }
             },
-
-
-
             {
                 description: {
                     [Op.iRegexp]: `${regexSearch}`
@@ -241,10 +237,8 @@ const courseSearch = (search) => {
     })
 }
 
-// courseSearch("what intro blue")
-
 /*************************************** Exports ***********************************************/
-modules.export = {
+module.exports = {
     createInstructor, 
     updateInstructor,
     settingsInstructor,

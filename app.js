@@ -4,7 +4,9 @@ const layouts = require('express-ejs-layouts');
 const session = require('express-session');
 const passport = require('./config/ppConfig'); //
 const flash = require('connect-flash');
-const consoleSep = '********************************************************************';
+const consoleSep = '****************************************';
+const helper = require('./helper')
+const bodyParser = require('body-parser')
 
 
 const app = express();
@@ -12,7 +14,8 @@ app.set('view engine', 'ejs');
 
 // Session 
 const SECRET_SESSION = process.env.SECRET_SESSION;
-const isLoggedIn = require('./middleware/isLoggedIn.js');
+const isUserLoggedIn = require('./middleware/isUserLoggedIn.js');
+const isInstructorLoggedIn = require('./middleware/isInstructorLoggedIn.js');
 
 // MIDDLEWARE
 app.use(require('morgan')('dev'));
@@ -32,6 +35,7 @@ const sessionObject = {
   resave: false,
   saveUninitialized: true
 }
+
 app.use(session(sessionObject));
 // Passport
 app.use(passport.initialize()); // Initialize passport
@@ -59,7 +63,7 @@ app.get('/results', (req, res) => {
   res.render('results', {searchQuery})
 })
 
-app.get('/profile', isLoggedIn, (req, res) => {
+app.get('/profile', isUserLoggedIn, (req, res) => {
   const { id, name, email } = req.user.get(); 
   res.render('profile', { id, name, email });
 });

@@ -11,6 +11,9 @@ module.exports = {
       username: {
         type: Sequelize.STRING
       },
+      role: {
+        type: Sequelize.STRING
+      },
       img: {
         type: Sequelize.STRING
       },
