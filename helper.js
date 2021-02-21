@@ -48,21 +48,25 @@ const updateInstructor = (
     .then(function (user) {
       console.log('HELPERUSER')
       console.log(user)
-      return user;
     });
 };
 
-const settingsInstructor = (instructorId, email, password) => {
+const settingsInstructor = (email, currentPassword, newPassword, confirmPassword, instructorId) => {
+  if(newPassword = confirmPassword ) {
     db.instructor.update({
         email: email, 
-        password: password,
+        password: newPassword,
     },
     {
         where: {
             id: instructorId,
         }
     })
+  } else {
+    return err
+  }
 }
+
 const deleteInstructor = (instructorId) => {
   db.instructor.destroy({
     where: {

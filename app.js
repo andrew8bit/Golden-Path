@@ -45,7 +45,9 @@ app.use(passport.session()); // Add a session
 app.use(flash());
 app.use((req, res, next) => {
   console.log(res.locals);
-  res.locals.alerts = req.flash();
+  res.locals.success_msg = req.flash('success_msg');
+  res.locals.error_msg = req.flash('error_msg');
+  res.locals.error = req.flash('error');
   res.locals.currentUser = req.user;
   next();
 });

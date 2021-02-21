@@ -12,29 +12,24 @@
                             <img src="../assets/images/avatar-3.jpg" class="avatar-xl rounded-circle border-width-4 border-white"
                                 alt="" />
                         </div>
-                        <div class="lh-1">
+						<div class="lh-1">
                             <h2 class="mb-0">
-                                Instructor
-                                <a href="#!" class="text-decoration-none" data-toggle="tooltip" data-placement="top" title="Beginner">
-                                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <rect x="3" y="8" width="2" height="6" rx="1" fill="#754FFE"></rect>
-                                        <rect x="7" y="5" width="2" height="9" rx="1" fill="#DBD8E9"></rect>
-                                        <rect x="11" y="2" width="2" height="12" rx="1" fill="#DBD8E9"></rect>
-                                    </svg>
+                                <%= currentUser.username %>
+								<span class="badge badge-light-primary text-primary">Instructor</span>
                                 </a>
                             </h2>
-							<p class="mb-0 d-block">
-								<% if (currentUser.tag != null) { %>
-									<%= currentUser.tag %>
-									<% } else { %>
-										Golden Path Instructor 
-										<% } %>
-							</p>
+                            <p class="mb-0 d-block">
+                            <% if (currentUser.tag != null) { %>
+                                <%= currentUser.tag %>
+                                <% } else { %>
+                                    Golden Path Instructor 
+                                    <% } %>
+                        </p>
                         </div>
                     </div>
                     <div>
                     <div>
-                        <a href="/instructor/profile" class="btn btn-outline-primary btn-sm d-none d-md-block">View your public profile</a>
+                        <a href="/instructor/profile/<%= currentUser.id %>" class="btn btn-outline-primary btn-sm d-none d-md-block">View your public profile</a>
                     </div>
                 </div>
             </div>
@@ -76,10 +71,6 @@
                                 </li>
                                 <!-- Nav item -->
                                 <li class="nav-item">
-                                    <a class="nav-link" href="/instructor/payment-method/<%= currentUser.id %> "><i class="fe fe-credit-card nav-icon"></i>Payment</a>
-                                </li>
-                                <!-- Nav item -->
-                                <li class="nav-item">
                                     <a class="nav-link" href="/instructor/delete-profile/<%= currentUser.id %> "><i class="fe fe-trash nav-icon"></i>Delete
                                         Profile</a>
                                 </li>
@@ -102,15 +93,16 @@
 							<p class="mb-0">
 								Edit your account settings and change your password here.
 							</p>
+							<%- include('../../partials/alerts') %>
 						</div>
 						<!-- Card body -->
 						<div class="card-body">
 							<h4 class="mb-0">Email Address</h4>
 							<p>
 								Your current email address is
-								<span class="text-success">user001@gmail.com</span>
+								<span class="text-success"><%= instructor.email %></span>
 							</p>
-							<form class="form-row">
+							<form class="form-row" action="/instructor/security/<%= instructor.id%>?_method=PUT" method="POST">
 								<div class="form-group col-lg-6 col-md-12 col-12">
 									<label class="form-label" for="email">New email address</label>
 									<input id="email" type="email" name="email" class="form-control" placeholder="" required />
@@ -127,18 +119,18 @@
 									password, so please expect that email after submitting.
 								</p>
 								<!-- Form -->
-								<form class="form-row">
+								<form class="form-row" action="/instructor/security/<%= instructor.id%>?_method=PUT" method="POST">
 									<div class="col-lg-6 col-md-12 col-12">
 											<!-- Current password -->
 										<div class="form-group">
-											<label class="form-label" for="currentpassword">Current password</label>
-											<input id="currentpassword" type="password" name="currentpassword" class="form-control"
+											<label class="form-label" for="currentPassword">Current password</label>
+											<input id="currentPassword" type="password" name="currentPassword" class="form-control"
 												placeholder="" required />
 										</div>
 											<!-- New password -->
 										<div class="form-group password-field">
-											<label class="form-label" for="newpassword">New password</label>
-											<input id="newpassword" type="password" name="newpassword" class="form-control mb-2"
+											<label class="form-label" for="newPassword">New password</label>
+											<input id="newpassword" type="password" name="newPassword" class="form-control mb-2"
 												placeholder="" required />
 											<div class="row align-items-center no-gutters">
 												<div class="col-6">
@@ -151,8 +143,8 @@
 										</div>
 										<div class="form-group">
 												<!-- Confirm new password -->
-											<label class="form-label" for="confirmpassword">Confirm New Password</label>
-											<input id="confirmpassword" type="password" name="confirmpassword" class="form-control mb-2"
+											<label class="form-label" for="confirmPassword">Confirm New Password</label>
+											<input id="confirmpassword" type="password" name="confirmPassword" class="form-control mb-2"
 												placeholder="" required />
 										</div>
 											<!-- Button -->

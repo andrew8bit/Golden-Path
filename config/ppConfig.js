@@ -76,10 +76,10 @@ passport.use('user-local', new LocalStrategy({
     .then(user => {
         if (!user || !user.validPassword(password)) {
             console.log('userlocal false')
-            cb(null, false);
+            return cb(null, false);
         } else {
             console.log('userlocal-user')
-            cb(null, user);
+            return cb(null, user);
         }
     })
     .catch(error => {
@@ -97,10 +97,10 @@ passport.use('instructor-local', new LocalStrategy({
     })
     .then(instructor => {
         if (!instructor || !instructor.validPassword(password)) {
-            console.log('WOAH WHAT HAPPEN')
-            cb(null, false);
+            console.log('WOAH BUCKO BUCKO BUCKO ')
+            return cb(null, false, {message: 'Email or password is incorrect'})
         } else {
-            cb(null, instructor);
+            return cb(null, instructor);
         }
     })
     .catch(error => {

@@ -1,5 +1,4 @@
-
-  	<!-- Page content -->
+	<!-- Page content -->
       <div class="container d-flex flex-column instructor-signup-bg">
 		<div class="row align-items-center justify-content-center no-gutters min-vh-100">
 			<div class="col-lg-5 col-md-8 py-8 py-xl-0">
@@ -7,10 +6,13 @@
 				<div class="card shadow">
 					<!-- Card body -->
 					<div class="card-body p-6">
+					
 						<div class="mb-4">
 							<h1 class="mb-1 font-weight-bold">Instructor Sign up</h1>
+							
 							<span>Already have an account?
 								<a href="/instructor/login" class="ml-1">Sign in</a></span>
+								<%- include('../../partials/alerts') %>
 						</div>
 						<!-- Form -->
 						<form action="/instructor/signup/:id" method="POST">
@@ -22,6 +24,7 @@
 							</div>
 								<!-- Email -->
 							<div class="form-group">
+								
 								<label for="email" class="form-label">Email</label>
 								<input type="email" id="email" class="form-control" name="email" placeholder="Email address here"
 									required />

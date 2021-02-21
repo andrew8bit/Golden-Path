@@ -14,7 +14,7 @@
                         </div>
                         <div class="lh-1">
                             <h2 class="mb-0">
-                                <%= instructor.username %>
+                                <%= currentUser.username %>
 								<span class="badge badge-light-primary text-primary">Instructor</span>
                                 </a>
                             </h2>
@@ -70,10 +70,6 @@
                                 </li>
                                 <!-- Nav item -->
                                 <li class="nav-item">
-                                    <a class="nav-link" href="/instructor/payment-method/<%= currentUser.id %> "><i class="fe fe-credit-card nav-icon"></i>Payment</a>
-                                </li>
-                                <!-- Nav item -->
-                                <li class="nav-item">
                                     <a class="nav-link" href="/instructor/delete-profile/<%= currentUser.id %> "><i class="fe fe-trash nav-icon"></i>Delete
                                         Profile</a>
                                 </li>
@@ -119,6 +115,7 @@
                             <p class="mb-4">
                                 Edit your personal information and address.
                             </p>
+                            <%- include('../../partials/alerts') %>
                             <!-- Form -->
                             <form class="form-row" action="/instructor/profile-edit/<%= instructor.id%>?_method=PUT" method="POST"
                                 <!-- Username -->
