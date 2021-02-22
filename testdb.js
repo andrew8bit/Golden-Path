@@ -1,4 +1,6 @@
+const { Sequelize } = require("sequelize");
 const db = require("./models");
+const Op = Sequelize.Op;
 const seperator = "*******************************************************"
 
 /******************************/
@@ -100,20 +102,20 @@ const seperator = "*******************************************************"
 //   })
 // }
 
-const deleteInstructor = (instructorId) => {
-  db.instructor.destroy({
-    where: {
-      id: instructorId
-    }
-  })
-}
-const deleteUser = (userId) => {
-  db.user.destroy({
-    where: {
-      id: userId
-    }
-  })
-}
+// const deleteInstructor = (instructorId) => {
+//   db.instructor.destroy({
+//     where: {
+//       id: instructorId
+//     }
+//   })
+// }
+// const deleteUser = (userId) => {
+//   db.user.destroy({
+//     where: {
+//       id: userId
+//     }
+//   })
+// }
 
 
 // createInstructor("GPtestInstructor01@gmail.com", "Password123");
@@ -204,44 +206,44 @@ const deleteUser = (userId) => {
 //     instructorId: DataTypes.INTEGER
 //     },
 
-db.course.findOrCreate({ // course creation
-  where: {
-    name: "Introduction to JavaScript",
-    time: "3 Hours",
-    difficulty: "Beginner",
-    description: "An online guide to the basics of JavaScript"
-  },
-}) // end of course creation
-.then(function ([course, created]) {
-  db.category.findOrCreate({ // find or creating category
-    where: {
-      name: "Programming"
-    }
-  })
-  .then(function ([category, created]) {
-    category.addCourse(course).then(function (courseCatInfo) { // add that category to course
-      db.subject.findOrCreate({ // find or creating subject
-        where: {
-          name: "JavaScript"
-        }
-      })
-      .then(function ([subject, created]) {
-        subject.addCourse(course).then(function (courseSubInfo) { // add that subject to course
-          db.instructor.findOrCreate({ // find or create instructor
-            where: {
-              username: "GPAdmin"
-            }
-          })
-          .then(function ([instructor, created]) {
-            instructor.addCourse(course).then(function (courseInstInfo) { // add that instructor to course
-              console.log(course)
-            }) // end of log 
-          }) // end of function add 
-        }) // end of function instructorfindOrCreate
-      }) // end of function subAdd
-    }) // end of function subfindOrCreate
-  }) // end of function catAdd
-}) // end of function catfindOrCreate
+// db.course.findOrCreate({ // course creation
+//   where: {
+//     name: "Introduction to JavaScript",
+//     time: "3 Hours",
+//     difficulty: "Beginner",
+//     description: "An online guide to the basics of JavaScript"
+//   },
+// }) // end of course creation
+// .then(function ([course, created]) {
+//   db.category.findOrCreate({ // find or creating category
+//     where: {
+//       name: "Programming"
+//     }
+//   })
+//   .then(function ([category, created]) {
+//     category.addCourse(course).then(function (courseCatInfo) { // add that category to course
+//       db.subject.findOrCreate({ // find or creating subject
+//         where: {
+//           name: "JavaScript"
+//         }
+//       })
+//       .then(function ([subject, created]) {
+//         subject.addCourse(course).then(function (courseSubInfo) { // add that subject to course
+//           db.instructor.findOrCreate({ // find or create instructor
+//             where: {
+//               username: "GPAdmin"
+//             }
+//           })
+//           .then(function ([instructor, created]) {
+//             instructor.addCourse(course).then(function (courseInstInfo) { // add that instructor to course
+//               console.log(course)
+//             }) // end of log 
+//           }) // end of function add 
+//         }) // end of function instructorfindOrCreate
+//       }) // end of function subAdd
+//     }) // end of function subfindOrCreate
+//   }) // end of function catAdd
+// }) // end of function catfindOrCreate
 
 
 
@@ -329,3 +331,38 @@ db.course.findOrCreate({ // course creation
 //     },
 //   })
 
+// const courseSearch = (search) => {
+//   let searchArray = search.split(" ")
+//   let regexSearch = new RegExp(searchArray.join("|", " "))
+//     console.log('******************************')
+//     console.log(regexSearch)
+//     console.log('******************************')
+//     db.course.findAll({
+//     where : {
+//         [Op.or]: [
+//             { 
+//                 title: {
+//                   [Op.or]: {
+//                     [Op.iRegexp]: `%${regexSearch}%`,
+//                     [Op.iLike]: `%${search}%`
+
+//                   }
+//                 }
+//             },
+//             {
+//                 description: {
+//                   [Op.or]: {
+//                     [Op.iRegexp]: `%${regexSearch}%`,
+//                     [Op.iLike]: `%${search}%`
+//                   }
+//                 }
+//             }
+//         ]
+//     }
+//   }).then(function (allCourses) {
+//       console.log('********************************')
+//       console.log(allCourses)
+//   })
+// }
+
+// courseSearch('bit')

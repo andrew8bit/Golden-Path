@@ -2,12 +2,13 @@ require('dotenv').config();
 const express = require('express');
 const layouts = require('express-ejs-layouts');
 const session = require('express-session');
-const passport = require('./config/ppConfig'); //
+const passport = require('./config/ppConfig'); 
 const flash = require('connect-flash');
 const consoleSep = '****************************************';
-const helper = require('./helper')
-const bodyParser = require('body-parser')
+const helper = require('./helper');
+const bodyParser = require('body-parser');
 const methodOverride = require('method-override');
+const db = require('./models');
 
 
 const app = express();
@@ -17,6 +18,7 @@ app.set('view engine', 'ejs');
 const SECRET_SESSION = process.env.SECRET_SESSION;
 const isUserLoggedIn = require('./middleware/isUserLoggedIn.js');
 const isInstructorLoggedIn = require('./middleware/isInstructorLoggedIn.js');
+const instructor = require('./models/instructor');
 
 // MIDDLEWARE
 app.use(require('morgan')('dev'));
@@ -52,13 +54,17 @@ app.use((req, res, next) => {
 });
 
 // Controllers
-// app.use('/auth', require('./controllers/auth'));
+app.use('/course', require('./controllers/course'));
 app.use('/student', require('./controllers/student'));
 app.use('/instructor', require('./controllers/instructor'));
 
 app.get('/', (req, res) => {
-  
-  res.render('homepage', );
+  console.log('HOME PAGE')
+  db.course.findAll({
+    include: [{model: db.instructor, as: 'instructor'}, {model: db.category, as: 'category'}, {model: db.subject, as: 'subject'}],
+  }).then(courses => {
+    res.render('homepage', { courses } );
+  })
 });
 
 app.get('/results', (req, res) => {

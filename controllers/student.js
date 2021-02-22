@@ -90,6 +90,54 @@ studentRouter.get('/dashboard/:id', isUserLoggedIn, (req, res) => {
     res.redirect(303, '/')
   } else {
     db.user.findOne({
+      where: {id: req.user.id},
+      include: [db.course]
+  }).then(function(user){
+      res.render('auth/student/dashboard', { user }); // this is a form
+    })
+  }
+})
+
+studentRouter.post('/dashboard/:id', isUserLoggedIn, (req, res) => {
+  if (req.user.id != req.params.id) {
+    req.flash('error_msg', 'Permission Denied - Please go to saftey' )
+    res.redirect(303, '/')
+  } else {
+    db.user.findOne({
+    where: {
+      id: req.params.id
+    }
+  }).then(function(user) {
+    db.course.findOne({
+      where: {id: req.body.bookmark}
+    }).then(function(course) {
+      // Finally, use the "addModel" method to attach one model to another model.
+      user.addCourse(course).then(function(relationInfo) {
+        res.render('auth/student/dashboard', { user })
+      });
+    });
+  });
+};
+});
+
+studentRouter.get('/dashboard/:id', isUserLoggedIn, (req, res) => {
+  if (req.user.id != req.params.id) {
+    req.flash('error_msg', 'Permission Denied - Please go to saftey' )
+    res.redirect(303, '/')
+  } else {
+    db.user.findOne({
+      where: {id: req.user.id}}).then(function(user){
+        res.render('auth/student/dashboard', { user }); // this is a form
+    })
+  }
+})
+
+studentRouter.get('/dashboard/:id', isUserLoggedIn, (req, res) => {
+  if (req.user.id != req.params.id) {
+    req.flash('error_msg', 'Permission Denied - Please go to saftey' )
+    res.redirect(303, '/')
+  } else {
+    db.user.findOne({
       where: {id: req.user.id}}).then(function(user){
         res.render('auth/student/dashboard', { user }); // this is a form
     })

@@ -6,8 +6,12 @@ An online marketplace app that fills the niche in creating a marketplace purely 
 
 Golden Path is created to give entrepreneurs and teachers the ability to sell knowledge, trade secrets, data, and lessons on profitable ideas like Digital Arbitage, Dropshipping, Options trading, web developement courses or even accelerated online coding bootcamps. This application's target audience is anyone willing to purchase knowledge and learn at their convience. It also attempts to enlighten people to the multiple paths of knowledge and ideas to increase their monthly income. All courses and products on the site will be vetted to ensure quality and to expose scams and MLMs. Like many online marketplaces user reviews will tell a convincing story if a course is right for you. This is the GP guarentee. 
 
+## Screenshots
+![Homepage](homepage-ss.png)
+![Student-Sign-Up](studentsignup-ss.png)
+![Results](results-ss.png)
 ## Models 
-
+![ModelDiagram](modeldiagram.png)
 USERS
 -------------------
 PRIMARY KEY ID - INTEGER
@@ -58,32 +62,39 @@ reviewId -
 - User searches for courses in the search bar
 - Relevant keywords will populate the search page that either matches the input catagory or if the name or content summary includes searched keywords
 - User reads summary of course, reviews, and decided if they want to take this course. 
-- User purchases a course, redirects to a checkout page.
-- User sucessfully pays 
+- User bookmarks their course
 - User will either be redirected to a new page with the course content, depending on how the lesson is set up.
-- User begings their golden path to knowledge
+- User begins their golden path to knowledge
 - User reviews the course and takes the knowledge to become wealthy or for personal satisfaction.
 ### As a seller
-- Seller signs up and fills out their seller form
-- Seller connects a way to get paid 
-- Seller will create a course that they are knowlegable at
-- Maybe include a video api that the user can connect their private youtube playlist on
-- Course will be posted up
-- A user should be allowed to message the seller for questions and more details of the course
-- Seller gets paid when a user signs up 
-- Seller can respond to feedback. 
+- Instructor signs up
+- Instructor can browse courses
+- Instructor is still in development - plans to post courses are still in development  
 
 ## NOTES
 Things to note 
-- This will be a quality over quantity site - or at least you get what you pay for. 
-- An unsigned user will be able to search and see a preview of courses
-- Implement a complex review system as this is the heart and soul of why people trust GP
-- Only allow verified purchasers the ability to comment and review 
-- The course content should vary and be very customizable for the seller 
-- Different profiles and permissions for a user and a seller
-- Thinking about categories and population of courses
-- Design and functionality will be inspired by apps like Udemy, Fiver, Ebay, Etsy, and Amazon. 
-- Using a payment API and Oauth. 
-- Will work on more wireframes. 
+- Original functionality has been decreased to meet project 2 deadline
+- CRUD routes have been achieved - partial functionality of application
+- working on alert error and success bug still
+- future plans include properly setting up course addition
+- restructuring course addition 
+- Adding a more social media aspect into the app 
+
+## CREDITS
+- Application was created using bootstrap theme Code Geeks - licensing applicable 
+- HOMEPAGE img - Christopher Austin Unsplash
+- RESULTS img - Taneli Lahtinen Unsplash
+- SINGLE COURSE img - Jaredd Craig Unsplash
+- STUDENT DASHBOARD img - Gwendal Cottin Unsplash
+- STUDENT PROFILE img - Jude Beck Unsplash
+- STUDENT SIGNUP img - Tianshu Liu Unsplash
+- STUDEN SIGNIN img - Pahala Basuki Unsplash
+- INSTRUCTOR SIGNIN img - Alexandre Chambonpg Unsplash 
+- INSTRUCTOR SIGNUP img - Psk Slayer Unsplash
+- INSTRUCTOR DASH img - Joshua Rawson Harris Unsplash
+- Multiple Local Strategies 
+- https://mjvolk.com/implement-multiple-local-user-authentication-strategies-in-passport-js
+
+
 
 

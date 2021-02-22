@@ -77,6 +77,12 @@
     background-position: center;
     background-size: 100%;
 }
+.courseShow-bg {
+    background-image: url(../images/bookstore-jaredd-craig.jpg);
+    background-color: transparent;
+    background-position: center;
+    background-size: 100%;
+}
 .student-bg{
     background-image: url(../images/purpledoor-jude-beck.jpg);
     background-color: transparent;
@@ -115,6 +121,15 @@
     padding-top: 1.5em;
     padding-bottom: 1.5em;;
 }
+.courseContent {
+    padding-top: 1.5em;
+    padding-bottom: 1.5em;;
+}
+.courseNav {
+    padding-top: 1.5em;
+    padding-bottom: 1.5em;;
+    justify-content: center;
+}
 
 .content-pad {
     padding-left: 1.5em;
@@ -130,7 +145,7 @@
 }
 
 .minus-pd-top {
-    padding-top : -5.5em;
+    padding-top : 0;
 }
 
 .courseAdd {

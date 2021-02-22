@@ -11,7 +11,7 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      models.course.belongsToMany(models.user, {through: "usersCourses"})
+      models.course.belongsToMany(models.user, { as: 'Students', through: "usersCourses"})
       models.course.belongsTo(models.instructor)
       models.course.belongsTo(models.category)
       models.course.belongsTo(models.subject)
@@ -19,7 +19,7 @@ module.exports = (sequelize, DataTypes) => {
     }
   };
   course.init({
-    name: DataTypes.STRING,
+    title: DataTypes.STRING,
     img: DataTypes.STRING,
     time: DataTypes.STRING,
     difficulty: DataTypes.STRING,

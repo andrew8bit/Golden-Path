@@ -12,52 +12,36 @@
 </div>
 <div class = "container studentDash-content" >
   <!-- Content -->
-  <div class="row justify-content-center">
+  <div class="row">
+    <% for (let i = 0; i < user.courses.length; i++) { %>
     <div class="col-lg-3 col-md-6 col-12">
       <!-- Card -->
       <div class="card  mb-4 card-hover">
-        <a href="#!" class="card-img-top"><img src="../assets/images/course-react.jpg" alt="" class="card-img-top rounded-top"></a>
-        <!-- Card body -->
+        <!-- Card Body -->
         <div class="card-body">
-          <h3 class="h4 mb-2 text-truncate-line-2 "><a href="#!" class="text-inherit">How to easily
-              create a website with React</a></h3>
-          <ul class="mb-3  list-inline">
-            <li class="list-inline-item"><i class="far fa-clock mr-1"></i>3h 56m</li>
-            <li class="list-inline-item"><svg class="mr-1 mt-n1" width="16" height="16" viewBox="0 0 16 16"
-                fill="none" xmlns="http://www.w3.org/2000/svg">
-                <rect x="3" y="8" width="2" height="6" rx="1" fill="#754FFE"></rect>
-                <rect x="7" y="5" width="2" height="9" rx="1" fill="#DBD8E9"></rect>
-                <rect x="11" y="2" width="2" height="12" rx="1" fill="#DBD8E9"></rect>
-              </svg>Beginner </li>
+          <h4 class="mb-2 text-truncate-line-2 "><a href="course/<%=user.courses[i].id%> " class="text-inherit">
+            <%=user.courses[i].title %>
+            </a></h4>
+          <!-- List -->
+          <ul class="mb-3 list-inline">
+            <li class="list-inline-item"><i class="far fa-clock mr-1"></i><%=user.courses[i].time %></li>
+            <li class="list-inline-item">
+              <%=user.courses[i].difficulty %>
+            </li>
           </ul>
-          <div class="lh-1">
-            <span>
-              <i class="mdi mdi-star text-warning mr-n1"></i>
-              <i class="mdi mdi-star text-warning mr-n1"></i>
-              <i class="mdi mdi-star text-warning mr-n1"></i>
-              <i class="mdi mdi-star text-warning mr-n1"></i>
-              <i class="mdi mdi-star text-warning"></i>
-            </span>
-            <span class="text-warning">4.5</span>
-            <span class="font-size-xs text-muted">(6,300)</span>
-          </div>
         </div>
-        <!-- Card footer -->
+        <!-- Card Footer -->
         <div class="card-footer">
           <div class="row align-items-center no-gutters">
             <div class="col-auto">
-              <img src="../assets/images/avatar-6.jpg" class="rounded-circle avatar-xs" alt="">
-            </div>
-            <div class="col ml-2">
-              <span>Morris Mccoy</span>
-            </div>
-            <div class="col-auto">
-              <a href="#!" class="text-muted" data-toggle="tooltip" data-placement="top" title=""
-                data-original-title="Add to Bookmarks">
+              <a href="#!" class="text-muted" data-toggle="tooltip" data-placement="top" title="Add to Bookmarks">
                 <i class="fe fe-bookmark  "></i>
               </a>
             </div>
           </div>
         </div>
+      </div>
+    </div>
+    <% } %>
       </div>
     </div>

@@ -6,6 +6,7 @@ const db = require('../models');
 const User = require('../models/user');
 const Instructor = require('../models/instructor');
 
+
 function SessionConstructor(userId, userGroup, details) {
     this.userId = userId,
     this.userGroup = userGroup,
@@ -14,16 +15,15 @@ function SessionConstructor(userId, userGroup, details) {
 
 // Passport "serialize" info to be able to login
 passport.serializeUser((userObject, cb) => {
-    // userObject can be any model
     let userGroup = "students";
     console.log(userObject)
     let userPrototype = userObject.role;
 
-    if (userPrototype === "students") {
+    if (userPrototype === "students") { // this allows us to differentiate students
         console.log("set userPrototype of students")
         userGroup = "students";
     } else if (userPrototype === "instructor") {
-        console.log("set userPrototype of instructor")
+        console.log("set userPrototype of instructor") // this allows us to differentiate students
         userGroup = "instructor"
     } 
 
@@ -35,7 +35,7 @@ passport.serializeUser((userObject, cb) => {
 
 passport.deserializeUser(function (sessionConstructor, cb) {
 
-    if (sessionConstructor.userGroup === 'students') {
+    if (sessionConstructor.userGroup === 'students') { //test to see if the user signed in as student or instructor
         console.log('deserializing')
         db.user.findByPk(sessionConstructor.userId)
         .then(user => {
@@ -49,7 +49,7 @@ passport.deserializeUser(function (sessionConstructor, cb) {
             console.log('**************************** Error:ln49' );
             console.log(error);
         })
-    } else if(sessionConstructor.userGroup === 'instructor') {
+    } else if(sessionConstructor.userGroup === 'instructor') { //test to see if the user signed in as student or instructor
         db.instructor.findByPk(sessionConstructor.userId)
         .then(instructor => {
             if (instructor) {

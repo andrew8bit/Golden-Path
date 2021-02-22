@@ -1,0 +1,85 @@
+<div class="py-4 py-lg-6 bg-primary courseShow-bg">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-12">
+                <div>
+                    <h1 class="text-white mb-1 display-4"><%= course.title %> </h1>
+                    <p class="mb-0 text-white lead"><%= course.category.name %></p>
+                    <p class="mb-0 text-white lead">By: <%= course.instructor.username %></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Content-->
+<ul class="nav courseNav nav-fill">
+    <% if (!currentUser) { %>
+        <li class="nav-item content-pad">
+            <a href="/student/login" class="btn btn-primary" type="button" >Sign In to Bookmark this course</a>
+        </li>
+    <% } else if (currentUser.role != "instructor"){ %>
+        <li class="nav-item content-pad">
+            <form method="POST" action="/student/dashboard/<%= currentUser.id %>">
+                <input class="btn btn-primary" type="hidden" name="bookmark" id="bookmark" value="<%= course.id %>">
+                <input class="btn btn-primary" type="submit" name="placeholder" id="placeholder" value="Bookmark this page">
+            </form>
+        </li>
+    <% } else { %>
+    <li class="nav-item content-pad">
+            <a href="/instructor/add-course/<%= currentUser.id %>" class="btn btn-primary" type="button" >Teach something Similar?</a>
+        </li>
+    <% } %>
+    <li class="nav-item content-pad">
+        <button class="btn btn-outline-primary" type="button" ><%= course.subject.name %></button>
+    </li>
+    <li class="nav-item content-pad ">
+        <button type="button" class="btn btn-outline-primary "><i class="far fa-clock mr-1"></i><%= course.time %></button>
+    </li>
+    <li class="nav-item content-pad ">
+        <button type="button" class="btn btn-outline-primary "><%= course.difficulty %></button>
+    </li>
+    <li class="nav-item content-pad ">
+        <button type="button" class="btn btn-outline-primary "><%= course.instructor.location %></button>
+    </li>
+    <li class="nav-item content-pad ">
+        <a href="/" class="btn btn-outline-primary" type="button" >View Students</a>
+    </li>
+</ul>
+
+
+<div class="card rounded-lg container courseContent">
+    <div class="row">
+        <div class="col-3">
+            <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                <a class="nav-link active" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab"
+                    aria-controls="v-pills-home" aria-selected="true">Course Decription</a>
+                <% for (let i = 0; i < course.lectures.length; i++ ) { %>
+
+                <a class="nav-link" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab"
+                    aria-controls="v-pills-profile" aria-selected="false"><%=course.lectures[i].title %></a>
+
+                <% } %>
+            </div>
+        </div>
+        <div class="col-9">
+            <div class="tab-content" id="v-pills-tabContent">
+                <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel"
+                    aria-labelledby="v-pills-home-tab"><%= course.description %></div>
+                <% for (let j = 0; j < course.lectures.length; j++) { %>
+
+                <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
+                    <%=course.lectures[j].content%></div>
+
+                <% } %>
+            </div>
+        </div>
+    </div>
+
+    </li>
+    </ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
