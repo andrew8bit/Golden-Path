@@ -117,7 +117,7 @@
                             </p>
                             <%- include('../../partials/alerts') %>
                             <!-- Form -->
-                            <form class="form-row" action="/instructor/profile-edit/<%= instructor.id%>?_method=PUT" method="POST"
+                            <form class="form-row" action="/instructor/profile-edit/<%= currentUser.id %>?_method=PUT" method="POST"
                                 <!-- Username -->
                                 <div class="form-group col-12 col-md-6">
                                     <label class="form-label" for="username">Username</label>

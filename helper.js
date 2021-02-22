@@ -76,7 +76,7 @@ const deleteInstructor = (instructorId) => {
 };
 
 /*************************************** INSTUCTOR FUNCTIONS ************************************/
-const createUser = (email, password) => {
+const createStudent = (email, password) => {
   db.user
     .findOrCreate({
       where: {
@@ -89,22 +89,22 @@ const createUser = (email, password) => {
     });
 };
 
-const updateUser = (
-  userId,
+const updateStudent = (
   username,
-  img,
+  tag,
   firstName,
   lastName,
   phoneNumber,
   birthday,
   location,
-  about
+  about,
+  userId,
 ) => {
   db.user
     .update(
       {
         username: username,
-        img: img,
+        tag: tag,
         firstName: firstName,
         lastName: lastName,
         phoneNumber: phoneNumber,
@@ -119,11 +119,13 @@ const updateUser = (
       }
     )
     .then(function (user) {
-      console.log(user);
+      console.log('*********************')
+      console.log('UPDATING USER')
+      console.log(user)
     });
 };
 
-const settingsUser = (userId, email, password) => {
+const settingsStudent = (userId, email, password) => {
     db.instructor.update({
         email: email, 
         password: password,
@@ -134,7 +136,7 @@ const settingsUser = (userId, email, password) => {
         }
     })
 }
-const deleteUser = (userId) => {
+const deleteStudent = (userId) => {
   db.user.destroy({
     where: {
       id: userId,
@@ -249,10 +251,10 @@ module.exports = {
     updateInstructor,
     settingsInstructor,
     deleteInstructor,
-    createUser,
-    updateUser,
-    settingsUser,
-    deleteUser,
+    createStudent,
+    updateStudent,
+    settingsStudent,
+    deleteStudent,
     addCategorySubject,
     createCourse,
     courseSearch,

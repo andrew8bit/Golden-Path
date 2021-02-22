@@ -20,10 +20,10 @@ passport.serializeUser((userObject, cb) => {
     let userPrototype = userObject.role;
 
     if (userPrototype === "students") {
-        console.log("set prototype of students")
+        console.log("set userPrototype of students")
         userGroup = "students";
     } else if (userPrototype === "instructor") {
-        console.log("set prototype of instructor")
+        console.log("set userPrototype of instructor")
         userGroup = "instructor"
     } 
 
@@ -36,7 +36,7 @@ passport.serializeUser((userObject, cb) => {
 passport.deserializeUser(function (sessionConstructor, cb) {
 
     if (sessionConstructor.userGroup === 'students') {
-        console.log('line 38 done')
+        console.log('deserializing')
         db.user.findByPk(sessionConstructor.userId)
         .then(user => {
             if (user) {
@@ -46,7 +46,7 @@ passport.deserializeUser(function (sessionConstructor, cb) {
             console.log('User is null...');
         })
         .catch(error => {
-            console.log('Yo... There is an error');
+            console.log('**************************** Error:ln49' );
             console.log(error);
         })
     } else if(sessionConstructor.userGroup === 'instructor') {
@@ -59,7 +59,7 @@ passport.deserializeUser(function (sessionConstructor, cb) {
             console.log('Instructor is null...');
         })
         .catch(error => {
-            console.log('Yo... There is an error');
+            console.log('**************************** Error:ln62');
             console.log(error);
         })
     }
@@ -75,15 +75,14 @@ passport.use('user-local', new LocalStrategy({
     })
     .then(user => {
         if (!user || !user.validPassword(password)) {
-            console.log('userlocal false')
-            return cb(null, false);
+            console.log('validating user...')
+            return cb(null, false, {message: 'Email or password is incorrect'})
         } else {
-            console.log('userlocal-user')
             return cb(null, user);
         }
     })
     .catch(error => {
-        console.log('**************************** Error');
+        console.log('**************************** Error:ln85');
         console.log(error);
     })
 }));
@@ -97,14 +96,14 @@ passport.use('instructor-local', new LocalStrategy({
     })
     .then(instructor => {
         if (!instructor || !instructor.validPassword(password)) {
-            console.log('WOAH BUCKO BUCKO BUCKO ')
+            console.log('validating instructor... ')
             return cb(null, false, {message: 'Email or password is incorrect'})
         } else {
             return cb(null, instructor);
         }
     })
     .catch(error => {
-        console.log('**************************** Error');
+        console.log('**************************** Error:ln106');
         console.log(error);
     })
 }));

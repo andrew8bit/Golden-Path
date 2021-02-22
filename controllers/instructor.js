@@ -5,7 +5,6 @@ const passport = require('../config/ppConfig');
 const session = require('express-session');
 const instructorRouter = express.Router();
 const helper = require('../helper')
-const bodyParser = require('body-parser')
 const flash = require('connect-flash');
 const methodOverride = require('method-override');
 const bcrypt = require('bcrypt')
@@ -34,6 +33,13 @@ instructorRouter.use(passport.initialize()); // Initialize passport
 instructorRouter.use(passport.session()); // Add a session
 // Flash 
 instructorRouter.use(flash());
+instructorRouter.use((req, res, next) => {
+  res.locals.success_msg = req.flash('success_msg');
+  res.locals.error_msg = req.flash('error_msg');
+  res.locals.error = req.flash('error');
+  res.locals.currentUser = req.user;
+  next();
+});
 
 instructorRouter.get('/login', (req, res) => {
   res.render('auth/instructor/login'); // this is a form
@@ -53,7 +59,8 @@ instructorRouter.get('/signup', (req, res) => {
 instructorRouter.put('/profile-edit/:id', isInstructorLoggedIn, (req, res) => {
   const { username, tag, firstName, lastName, phoneNumber, birthday, location, about} = req.body
   if (req.user.id != req.params.id) {
-    console.log('WOAH BRO YOU DIDN NOT WANT THAT ')
+    req.flash('error_msg, Permission Denied - Please go to saftey')
+    res.redirect(303, `/`)
   } else {
     helper.updateInstructor(username, tag, firstName, lastName, phoneNumber, birthday, location, about, req.params.id)
       res.redirect(303, `/instructor/profile-edit/${req.params.id}`)
@@ -68,7 +75,7 @@ instructorRouter.get('/profile-edit/:id', isInstructorLoggedIn, (req, res) => {
       id: req.params.id
     }
   }).then(function (instructor) {
-    res.render('auth/instructor/profile-edit', {instructor}); // this is a form
+    res.render('auth/instructor/profile-edit', { instructor }); // this is a form
   })
 });
 
@@ -155,14 +162,14 @@ instructorRouter.get('/delete-profile/:id', isInstructorLoggedIn, (req, res) => 
   })
 });
 
-instructorRouter.delete("/delete-profile/:id", (req, res) => {
+instructorRouter.delete("/delete-profile/:id", isInstructorLoggedIn,(req, res) => {
   db.instructor.destroy({
       where: {
         id: req.params.id,
       },
     });
     req.logOut();
-    req.flash('error_msg', 'Goodbye');
+    req.flash('error_msg', 'Goodbye, do not let lost in your path for knowledge without us');
     res.redirect("/");
 });
 

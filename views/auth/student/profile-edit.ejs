@@ -84,8 +84,9 @@
                     <div class="card-header">
                         <h3 class="mb-0">Profile Details</h3>
                         <p class="mb-0">
-                            You have full control to manage your own account setting.
+                            You have full control to manage your own account setting. 
                         </p>
+                        <%- include('../../partials/alerts') %>
                     </div>
                     <!-- Card body -->
                     <div class="card-body">
@@ -111,32 +112,37 @@
                                 Edit your personal information and address.
                             </p>
                             <!-- Form -->
-                            <form class="form-row">
+                            <form class="form-row" action="/student/profile-edit/<%= currentUser.id %>?_method=PUT" method="POST">
                                 <!-- Username -->
                                 <div class="form-group col-12 col-md-6">
-                                    <label class="form-label" for="uname">Username</label>
-                                    <input type="text" id="uname" class="form-control" placeholder="Username" required />
+                                    <label class="form-label" for="username">Username</label>
+                                    <input type="text" id="username" name="username" class="form-control" placeholder="Username" required />
+                                </div>
+                                <!-- Tag -->
+                                <div class="form-group col-12 col-md-6">
+                                    <label class="form-label" for="tag">Tag</label>
+                                    <input type="text" id="tag" name="tag" class="form-control" placeholder="Golden Path Student" required />
                                 </div>
                                 <!-- First name -->
                                 <div class="form-group col-12 col-md-6">
-                                    <label class="form-label" for="fname">First Name</label>
-                                    <input type="text" id="fname" class="form-control" placeholder="First Name" required />
+                                    <label class="form-label" for="firstName">First Name</label>
+                                    <input type="text" id="firstName" name ="firstName" class="form-control" placeholder="First Name" required />
                                 </div>
                                 <!-- Last name -->
                                 <div class="form-group col-12 col-md-6">
-                                    <label class="form-label" for="lname">Last Name</label>
-                                    <input type="text" id="lname" class="form-control" placeholder="Last Name" required />
+                                    <label class="form-label" for="lastName">Last Name</label>
+                                    <input type="text" id="lastName" name="lastName" class="form-control" placeholder="Last Name" required />
                                 </div>
                                 <!-- Phone -->
                                 <div class="form-group col-12 col-md-6">
-                                    <label class="form-label" for="phone">Phone</label>
-                                    <input type="text" id="phone" class="form-control" placeholder="Phone" required />
+                                    <label class="form-label" for="phoneNumber">Phone</label>
+                                    <input type="text" id="phoneNumber" name='phoneNumber' class="form-control" placeholder="Phone" required />
                                 </div>
                                 <!-- Birthday -->
                                 <div class="form-group col-12 col-md-6">
-                                    <label class="form-label" for="birth">Birthday</label>
-                                    <input class="form-control flatpickr" type="text" placeholder="Birth of Date" id="birth"
-                                        name="birth" />
+                                    <label class="form-label" for="birthday">Birthday</label>
+                                    <input class="form-control flatpickr" type="text" placeholder="Birth of Date" id="birthday"
+                                        name="birthday" />
                                 </div>
                                 <!-- Location -->
                                 <div class="form-group col-12 col-md-6">
@@ -150,11 +156,10 @@
                                  </div>
                                  <!-- About Me -->
                                  <div class="form-group" style="width: 100%;">
-                                    <label class="input-label" for="aboutInput">About you</label>
-                                    <textarea name= "aboutInput" id="aboutnput" class="form-control"
+                                    <label class="input-label" for="about">About you</label>
+                                    <textarea name= "about" id="about" class="form-control"
                                        placeholder="Tell us about yourself" rows="4"></textarea>
                                  </div>
-                                 <label class="hidden" name ="id" id="id" value="<%=currentUser.id%>"></label>
                                     <!-- Button -->
                                     <button class="btn btn-primary" type="submit">
                                         Update Profile

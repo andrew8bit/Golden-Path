@@ -26,7 +26,7 @@
                     </div>
                     <div>
                     <div>
-                        <a href="dashboard-student.html" class="btn btn-outline-primary btn-sm d-none d-md-block">Go to
+                        <a href='/student/dashboard/<%=currentUser.id%>' class="btn btn-outline-primary btn-sm d-none d-md-block">Go to
                             Student Dashboard</a>
                     </div>
                 </div>
@@ -93,7 +93,9 @@
                             If you close your account, you will be unsubscribed from all
                             your 0 courses, and will lose access forever.
                         </p>
-                        <a href="../index.html" class="btn btn-outline-danger btn-sm">Close My Account</a>
+                        <form action="/student/delete-profile/<%=currentUser.id%>?_method=DELETE" method="POST">
+                            <button type="submit" class="btn btn-outline-danger btn-sm">Close My Account</button>
+                        </form>
                     </div>
                 </div>
             </div>

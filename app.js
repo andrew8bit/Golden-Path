@@ -44,7 +44,6 @@ app.use(passport.session()); // Add a session
 // Flash 
 app.use(flash());
 app.use((req, res, next) => {
-  console.log(res.locals);
   res.locals.success_msg = req.flash('success_msg');
   res.locals.error_msg = req.flash('error_msg');
   res.locals.error = req.flash('error');

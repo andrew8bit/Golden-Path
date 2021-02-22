@@ -88,15 +88,16 @@
 							<p class="mb-0">
 								Edit your account settings and change your password here.
 							</p>
+							<%- include('../../partials/alerts') %>
 						</div>
 						<!-- Card body -->
 						<div class="card-body">
 							<h4 class="mb-0">Email Address</h4>
 							<p>
 								Your current email address is
-								<span class="text-success">user001@gmail.com</span>
+								<span class="text-success"><%= currentUser.email %> </span>
 							</p>
-							<form class="form-row">
+							<form class="form-row" action="/student/security/<%= currentUser.id%>?_method=PUT" method="POST">
 								<div class="form-group col-lg-6 col-md-12 col-12">
 									<label class="form-label" for="email">New email address</label>
 									<input id="email" type="email" name="email" class="form-control" placeholder="" required />
@@ -113,32 +114,24 @@
 									password, so please expect that email after submitting.
 								</p>
 								<!-- Form -->
-								<form class="form-row">
+								<form class="form-row" action="/student/security/<%= currentUser.id%>?_method=PUT" method="POST">
 									<div class="col-lg-6 col-md-12 col-12">
 											<!-- Current password -->
 										<div class="form-group">
-											<label class="form-label" for="currentpassword">Current password</label>
-											<input id="currentpassword" type="password" name="currentpassword" class="form-control"
+											<label class="form-label" for="currentPassword">Current password</label>
+											<input id="currentPassword" type="password" name="currentPassword" class="form-control"
 												placeholder="" required />
 										</div>
 											<!-- New password -->
 										<div class="form-group password-field">
-											<label class="form-label" for="newpassword">New password</label>
-											<input id="newpassword" type="password" name="newpassword" class="form-control mb-2"
+											<label class="form-label" for="newPassword">New password</label>
+											<input id="newPassword" type="password" name="newPassword" class="form-control mb-2"
 												placeholder="" required />
-											<div class="row align-items-center no-gutters">
-												<div class="col-6">
-													<span data-toggle="tooltip" data-placement="right"
-														title="Test it by typing a password in the field below. To reach full strength, use at least 6 characters, a capital letter and a digit, e.g. 'Test01'">Password
-														strength
-														<i class="fas fa-question-circle ml-1"></i></span>
-												</div>
-											</div>
 										</div>
 										<div class="form-group">
 												<!-- Confirm new password -->
-											<label class="form-label" for="confirmpassword">Confirm New Password</label>
-											<input id="confirmpassword" type="password" name="confirmpassword" class="form-control mb-2"
+											<label class="form-label" for="confirmPassword">Confirm New Password</label>
+											<input id="confirmPassword" type="password" name="confirmPassword" class="form-control mb-2"
 												placeholder="" required />
 										</div>
 											<!-- Button -->
@@ -146,12 +139,6 @@
 											Save Password
 										</button>
 										<div class="col-6"></div>
-									</div>
-									<div class="col-12 mt-4">
-										<p class="mb-0">
-											Can't remember your current password?
-											<a href="#!">Reset your password via email</a>
-										</p>
 									</div>
 								</form>
 							</div>
